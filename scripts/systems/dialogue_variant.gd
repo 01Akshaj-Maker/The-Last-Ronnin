@@ -20,17 +20,4 @@ extends Resource
 ## True when this variant's condition currently holds. Reads the live Identity counters, so
 ## it reflects everything the player has done up to the moment the line is shown.
 func is_active() -> bool:
-	return _compare(Identity.get_value(axis), threshold)
-
-
-func _compare(value: int, target: int) -> bool:
-	match comparator:
-		">=": return value >= target
-		"<=": return value <= target
-		">": return value > target
-		"<": return value < target
-		"==": return value == target
-		"!=": return value != target
-		_:
-			push_warning("DialogueVariant: unknown comparator '%s' (treated as false)" % comparator)
-			return false
+	return CounterCompare.evaluate(Identity.get_value(axis), comparator, threshold)

@@ -1,39 +1,71 @@
 extends Control
 
-## PLACEHOLDER ending (Bible §5.4 builds the real one). Reads the accumulated Identity
-## counters and prints them, plus a one-line "who you became" summary derived from the
-## dominant axis. Grey-box, text only — no epitaph assembly or visual mood yet; that is
-## Step 4, where this same counter read-out becomes the swapped-mood grave scene (§3).
+## The grave — real ending assembly (Bible §3 "ending state", §6 visual mood).
 ##
-## The raw numbers are shown here only because this is a development read-out. The real
-## ending never exposes them.
+## Reads the accumulated Identity counters and assembles two things:
+##   1. an EPITAPH, from data-driven conditional fragments (EpitaphData), and
+##   2. a visual MOOD (palette + placeholder particles), chosen by "warmth" (MoodSet).
+##
+## Both the epitaph fragments and the moods live in data (res://data/ending/), so new content
+## is a data edit, never a code edit (§9). The visuals here are deliberate placeholders — a
+## tinted ColorRect for light and CPUParticles2D squares for blossoms/snow. Real art/shaders
+## can replace them later: the selection logic below reads only from data and never changes.
 
-## Dominant-axis → summary line. A placeholder stand-in for the real epitaph assembly; kept
-## as an editable table so tuning the wording is a data-shaped edit.
-const DESCRIPTORS: Dictionary = {
-	"Honor": "You are remembered as one who held to honor above all else.",
-	"Mercy": "You are remembered for the mercy you showed when you needn't have.",
-	"Attachment": "You are remembered as one who could never quite let go.",
-	"Selflessness": "You are remembered for giving yourself away to others.",
-}
-const DESCRIPTOR_NEUTRAL: String = "You are remembered only dimly — a shape that passed through."
+@export var epitaph: EpitaphData
+@export var mood_set: MoodSet
 
-@onready var _counters_label: Label = $Center/VBox/Counters
-@onready var _summary_label: Label = $Center/VBox/Summary
+@onready var _background: ColorRect = $Background
+@onready var _tint: ColorRect = $Tint
+@onready var _particles: CPUParticles2D = $Particles
+@onready var _epitaph_label: Label = $Center/VBox/Epitaph
+@onready var _caption_label: Label = $Center/VBox/Caption
 
 
 func _ready() -> void:
-	var lines: PackedStringArray = PackedStringArray()
-	for axis in Identity.AXES:
-		lines.append("%s   %d" % [axis, Identity.get_value(axis)])
-	_counters_label.text = "\n".join(lines)
+	_apply_mood(mood_set.pick(_warmth()) if mood_set != null else null)
+	if epitaph != null:
+		_epitaph_label.text = epitaph.assemble()
 
-	var dominant: String = Identity.dominant_axis()
-	_summary_label.text = DESCRIPTORS.get(dominant, DESCRIPTOR_NEUTRAL)
+
+## Warmth of the life just lived. Mercy and selflessness read warm; attachment (clinging,
+## vengeance) reads cold; Honor is deliberately neutral to the mood. One line to retune the
+## whole warm/cold axis (§3).
+func _warmth() -> int:
+	return Identity.get_value("Mercy") + Identity.get_value("Selflessness") - Identity.get_value("Attachment")
+
+
+func _apply_mood(mood: MoodData) -> void:
+	if mood == null:
+		return
+	_background.color = mood.background_color
+	_tint.color = mood.tint_color
+	_caption_label.text = mood.caption
+	_configure_particles(mood)
+
+
+func _configure_particles(mood: MoodData) -> void:
+	_particles.emitting = mood.particle_enabled
+	if not mood.particle_enabled:
+		return
+	var view: Vector2 = get_viewport_rect().size
+	# Emit along the top edge, fall down across the whole screen.
+	_particles.position = Vector2(view.x * 0.5, -16.0)
+	_particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	_particles.emission_rect_extents = Vector2(view.x * 0.5 + 40.0, 6.0)
+	_particles.amount = mood.particle_amount
+	_particles.color = mood.particle_color
+	_particles.gravity = mood.particle_gravity
+	_particles.lifetime = 9.0
+	_particles.direction = Vector2(0, 1)
+	_particles.spread = 12.0
+	_particles.initial_velocity_min = 12.0
+	_particles.initial_velocity_max = 30.0
+	_particles.scale_amount_min = 3.0
+	_particles.scale_amount_max = 6.0
 
 
 func _process(_delta: float) -> void:
-	# TEMP (Step 2): replay from the top to try other choices. Remove with the debug harness.
+	# TEMP (debug): replay from the top to try other routes. Remove with the debug harness.
 	if Input.is_action_just_pressed("debug_restart"):
 		Identity.reset()
 		get_tree().change_scene_to_file("res://scenes/world/Main.tscn")

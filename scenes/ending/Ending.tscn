@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/ending.gd" id="1"]
+[ext_resource type="Resource" path="res://data/ending/epitaph.tres" id="2"]
+[ext_resource type="Resource" path="res://data/ending/moods.tres" id="3"]
 
 [node name="Ending" type="Control"]
 layout_mode = 3
@@ -8,13 +10,28 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
+epitaph = ExtResource("2")
+mood_set = ExtResource("3")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.1, 0.11, 0.13, 1)
+color = Color(0.12, 0.13, 0.15, 1)
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+lifetime = 9.0
+
+[node name="Tint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Center" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -24,28 +41,28 @@ anchor_bottom = 1.0
 
 [node name="VBox" type="VBoxContainer" parent="Center"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 22
 
 [node name="Title" type="Label" parent="Center/VBox"]
 layout_mode = 2
 horizontal_alignment = 1
 text = "—  the grave  —"
 
-[node name="Counters" type="Label" parent="Center/VBox"]
+[node name="Epitaph" type="Label" parent="Center/VBox"]
+custom_minimum_size = Vector2(760, 0)
 layout_mode = 2
 horizontal_alignment = 1
-text = "Honor   0
-Mercy   0
-Attachment   0
-Selflessness   0"
+autowrap_mode = 3
+text = "Here lies a ronin."
 
-[node name="Summary" type="Label" parent="Center/VBox"]
+[node name="Caption" type="Label" parent="Center/VBox"]
 layout_mode = 2
 horizontal_alignment = 1
-text = "You are remembered."
+modulate = Color(0.68, 0.68, 0.72, 1)
+text = "a still, grey quiet"
 
 [node name="Hint" type="Label" parent="Center/VBox"]
 layout_mode = 2
 horizontal_alignment = 1
-modulate = Color(0.6, 0.6, 0.62, 1)
+modulate = Color(0.5, 0.5, 0.54, 1)
 text = "R  —  replay (debug)"

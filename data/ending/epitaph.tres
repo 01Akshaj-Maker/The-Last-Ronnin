@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="EpitaphData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/epitaph_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/epitaph_line.gd" id="2"]
+
+[sub_resource type="Resource" id="mercy_high"]
+script = ExtResource("2")
+text = "He was gentler than the war that made him."
+axis = "Mercy"
+comparator = ">="
+threshold = 2
+
+[sub_resource type="Resource" id="mercy_low"]
+script = ExtResource("2")
+text = "He met the world's cruelty with a blade of his own."
+axis = "Mercy"
+comparator = "<="
+threshold = -1
+
+[sub_resource type="Resource" id="honor_high"]
+script = ExtResource("2")
+text = "He kept faith with the old code, whatever it asked of him."
+axis = "Honor"
+comparator = ">="
+threshold = 2
+
+[sub_resource type="Resource" id="self_high"]
+script = ExtResource("2")
+text = "What little he carried, he gave away."
+axis = "Selflessness"
+comparator = ">="
+threshold = 2
+
+[sub_resource type="Resource" id="attach_high"]
+script = ExtResource("2")
+text = "He bore his dead upon his back and would not set them down."
+axis = "Attachment"
+comparator = ">="
+threshold = 2
+
+[sub_resource type="Resource" id="attach_low"]
+script = ExtResource("2")
+text = "At the last, he learned to lay his burdens down."
+axis = "Attachment"
+comparator = "<="
+threshold = -1
+
+[resource]
+script = ExtResource("1")
+opening = "Here lies a ronin, come at last to the only door that was always his."
+lines = [SubResource("mercy_high"), SubResource("mercy_low"), SubResource("honor_high"), SubResource("self_high"), SubResource("attach_high"), SubResource("attach_low")]
+fallback = "Of him little was remembered, and less was ever written."
+closing = "Rest now. The road is walked."
