@@ -1,26 +1,34 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_variant.gd" id="3"]
+
+[sub_resource type="Resource" id="variant_mercy"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = ">="
+threshold = 2
+body = "News runs quick through a village this small. They say you let the rice-thief keep his hands — that tonight his children eat because of you. Mercy has grown so rare I had near forgotten its face. Bless you, stranger."
 
 [sub_resource type="Resource" id="choice_a"]
 script = ExtResource("2")
-text = "The dead are owed silence, not talk."
+text = "The moment asked, and I answered it."
 effects = {
-"Honor": 1,
-"Mercy": -1
+"Honor": 1
 }
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
-text = "Say his name to me. I will carry it a while."
+text = "No child should starve over a fistful of rice."
 effects = {
-"Mercy": 2,
+"Mercy": 1,
 "Selflessness": 1
 }
 
 [resource]
 script = ExtResource("1")
 speaker = "Widow by the Shrine"
-body = "You have a soldier's walk — my son had it too, before the war swallowed him whole. Strange. You look at our little shrine as though you already know which stone is loose."
+body = "News runs quick through a village this small. They say you gave the rice-thief to the magistrate without a flicker — that the law took its hand and its due. Hard times make hard men, I suppose."
+variants = [SubResource("variant_mercy")]
 choices = [SubResource("choice_a"), SubResource("choice_b")]

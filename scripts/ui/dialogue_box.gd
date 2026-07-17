@@ -4,8 +4,9 @@ extends CanvasLayer
 ## moves the selection with up/down (or left/right) and confirms with interact/Enter.
 ##
 ## Knows nothing about NPCs or the player — it is opened with a DialogueData and reports
-## back which choice was picked, then hides itself (Bible §9). In Step 1 the picked choice
-## has no mechanical effect yet; the identity system (§3, Step 2) will read it here.
+## back which choice was picked, then hides itself (Bible §9). The body it shows is whatever
+## the data resolves to now (DialogueData.get_active_body()), which is how reflected-world
+## variants (§3) surface here without this UI knowing anything about the counters.
 
 signal choice_selected(index: int, choice: DialogueChoice)
 signal closed
@@ -39,7 +40,7 @@ func _ready() -> void:
 func open(data: DialogueData) -> void:
 	_data = data
 	_speaker_label.text = data.speaker
-	_body_label.text = data.body
+	_body_label.text = data.get_active_body()
 	_selected = 0
 	for i in _choice_rows.size():
 		var has_choice: bool = i < data.choices.size()
