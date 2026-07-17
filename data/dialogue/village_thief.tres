@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2")
+text = "The law is the law. Justice will be done."
+effects = {
+"Honor": 2,
+"Mercy": -2
+}
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2")
+text = "Keep the rice. Feed them — and steal no more."
+effects = {
+"Honor": -1,
+"Mercy": 3,
+"Selflessness": 1
+}
+
+[resource]
+script = ExtResource("1")
+speaker = "Ragged Thief"
+body = "Caught me clean, samurai. I stole rice — my children haven't eaten in three days. The old law says you take my hand for it. Go on, then. Do what men like you do."
+choices = [SubResource("choice_a"), SubResource("choice_b")]

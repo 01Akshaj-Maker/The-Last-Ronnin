@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2")
+text = "Run home, child. The rain will chill you to the bone."
+effects = {
+"Selflessness": 1,
+"Attachment": -1
+}
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2")
+text = "Stay. Tell me what your grandmother sees."
+effects = {
+"Attachment": 2
+}
+
+[resource]
+script = ExtResource("1")
+speaker = "Child in the Rain"
+body = "Mister — why are you all wet, but the rain doesn't seem to land on you? Grandma says people like you are already halfway to somewhere else, and shouldn't be spoken to too long."
+choices = [SubResource("choice_a"), SubResource("choice_b")]
