@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
+
+[sub_resource type="Resource" id="choice_a"]
+script = ExtResource("2")
+text = "That I did my duty, whatever it cost me."
+
+[sub_resource type="Resource" id="choice_b"]
+script = ExtResource("2")
+text = "That I was gentler than the war left me."
+
+[resource]
+script = ExtResource("1")
+speaker = "Wandering Monk"
+body = "You carry a message you cannot read, samurai — bound for a place you have never walked, yet your feet already know the road. When this journey ends, what would you have it say of you?"
+choices = [SubResource("choice_a"), SubResource("choice_b")]
