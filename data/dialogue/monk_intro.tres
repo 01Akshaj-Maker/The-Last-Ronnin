@@ -6,10 +6,19 @@
 [sub_resource type="Resource" id="choice_a"]
 script = ExtResource("2")
 text = "That I did my duty, whatever it cost me."
+effects = {
+"Honor": 2,
+"Mercy": -1,
+"Selflessness": 1
+}
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
 text = "That I was gentler than the war left me."
+effects = {
+"Attachment": -1,
+"Mercy": 2
+}
 
 [resource]
 script = ExtResource("1")
