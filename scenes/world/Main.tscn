@@ -92,10 +92,13 @@ position = Vector2(-140, 470)
 block_size = Vector2(24, 80)
 block_color = Color(0.3, 0.26, 0.22, 1)
 
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Actors" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Actors" instance=ExtResource("2")]
 position = Vector2(0, 440)
 
-[node name="Widow" parent="." instance=ExtResource("3")]
+[node name="Widow" parent="Actors" instance=ExtResource("3")]
 position = Vector2(30, -210)
 dialogue = ExtResource("7")
 npc_animation = &"widow"
@@ -103,7 +106,7 @@ sprite_scale = Vector2(3.2, 3.2)
 sprite_offset = Vector2(0, -7)
 body_size = Vector2(40, 56)
 
-[node name="Thief" parent="." instance=ExtResource("3")]
+[node name="Thief" parent="Actors" instance=ExtResource("3")]
 position = Vector2(470, 160)
 dialogue = ExtResource("8")
 npc_animation = &"ronin"
@@ -112,7 +115,7 @@ sprite_offset = Vector2(0, -7)
 sprite_flip_h = true
 body_size = Vector2(44, 56)
 
-[node name="Child" parent="." instance=ExtResource("3")]
+[node name="Child" parent="Actors" instance=ExtResource("3")]
 position = Vector2(-300, 320)
 dialogue = ExtResource("9")
 npc_animation = &"villager_young"

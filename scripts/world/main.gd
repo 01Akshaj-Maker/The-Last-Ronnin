@@ -4,11 +4,11 @@ extends Node2D
 ## the player so none of them need to know about each other, and routes a picked choice's
 ## data-defined effects into the Identity system (§3).
 ##
-## Adding an NPC is a localized change: drop the Npc scene in, give it a dialogue resource,
-## and put it in the "npc" group — this script auto-connects it. Adding a weighted choice is
-## pure data on the choice resource; no change here.
+## Adding an NPC is a localized change: drop the Npc scene under Actors, give it a dialogue
+## resource, and put it in the "npc" group — this script auto-connects it. Actors is Y-sorted
+## so characters render in the correct front/back order.
 
-@onready var _player: CharacterBody2D = $Player
+@onready var _player: CharacterBody2D = $Actors/Player
 @onready var _dialogue_box: CanvasLayer = $DialogueUI
 
 
