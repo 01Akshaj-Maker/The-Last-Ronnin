@@ -5,10 +5,11 @@
 [ext_resource type="SpriteFrames" path="res://assets/characters/npc/npc_frames.tres" id="3"]
 
 [sub_resource type="RectangleShape2D" id="body_shape"]
-size = Vector2(28, 28)
+resource_local_to_scene = true
+size = Vector2(42, 56)
 
 [sub_resource type="CircleShape2D" id="zone_shape"]
-radius = 46.0
+radius = 60.0
 
 [node name="Npc" type="StaticBody2D" groups=["npc"]]
 script = ExtResource("1")
