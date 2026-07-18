@@ -1,0 +1,446 @@
+[gd_resource type="SpriteFrames" load_steps=64 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/npc/ronin.png" id="tex_ronin"]
+[ext_resource type="Texture2D" path="res://assets/characters/npc/samurai.png" id="tex_samurai"]
+[ext_resource type="Texture2D" path="res://assets/characters/npc/lord.png" id="tex_lord"]
+[ext_resource type="Texture2D" path="res://assets/characters/npc/villager.png" id="tex_villager"]
+[ext_resource type="Texture2D" path="res://assets/characters/npc/widow.png" id="tex_widow"]
+
+[sub_resource type="AtlasTexture" id="ronin_0"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(0, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_1"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(29, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_2"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(58, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_3"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(87, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_4"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(116, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_5"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(145, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_6"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(174, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="ronin_7"]
+atlas = ExtResource("tex_ronin")
+region = Rect2(203, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_0"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(0, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_1"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(29, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_2"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(58, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_3"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(87, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_4"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(116, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_5"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(145, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_6"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(174, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_7"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(203, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_8"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(232, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="samurai_9"]
+atlas = ExtResource("tex_samurai")
+region = Rect2(261, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_0"]
+atlas = ExtResource("tex_lord")
+region = Rect2(0, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_1"]
+atlas = ExtResource("tex_lord")
+region = Rect2(29, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_2"]
+atlas = ExtResource("tex_lord")
+region = Rect2(58, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_3"]
+atlas = ExtResource("tex_lord")
+region = Rect2(87, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_4"]
+atlas = ExtResource("tex_lord")
+region = Rect2(116, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_5"]
+atlas = ExtResource("tex_lord")
+region = Rect2(145, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_6"]
+atlas = ExtResource("tex_lord")
+region = Rect2(174, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_7"]
+atlas = ExtResource("tex_lord")
+region = Rect2(203, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_8"]
+atlas = ExtResource("tex_lord")
+region = Rect2(232, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="lord_9"]
+atlas = ExtResource("tex_lord")
+region = Rect2(261, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_0"]
+atlas = ExtResource("tex_villager")
+region = Rect2(0, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_1"]
+atlas = ExtResource("tex_villager")
+region = Rect2(29, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_2"]
+atlas = ExtResource("tex_villager")
+region = Rect2(58, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_3"]
+atlas = ExtResource("tex_villager")
+region = Rect2(87, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_4"]
+atlas = ExtResource("tex_villager")
+region = Rect2(116, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_5"]
+atlas = ExtResource("tex_villager")
+region = Rect2(145, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_6"]
+atlas = ExtResource("tex_villager")
+region = Rect2(174, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_7"]
+atlas = ExtResource("tex_villager")
+region = Rect2(203, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_8"]
+atlas = ExtResource("tex_villager")
+region = Rect2(232, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_young_9"]
+atlas = ExtResource("tex_villager")
+region = Rect2(261, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_0"]
+atlas = ExtResource("tex_villager")
+region = Rect2(290, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_1"]
+atlas = ExtResource("tex_villager")
+region = Rect2(319, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_2"]
+atlas = ExtResource("tex_villager")
+region = Rect2(348, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_3"]
+atlas = ExtResource("tex_villager")
+region = Rect2(377, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_4"]
+atlas = ExtResource("tex_villager")
+region = Rect2(406, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_5"]
+atlas = ExtResource("tex_villager")
+region = Rect2(435, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_6"]
+atlas = ExtResource("tex_villager")
+region = Rect2(464, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_7"]
+atlas = ExtResource("tex_villager")
+region = Rect2(493, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_8"]
+atlas = ExtResource("tex_villager")
+region = Rect2(522, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="villager_old_9"]
+atlas = ExtResource("tex_villager")
+region = Rect2(551, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_0"]
+atlas = ExtResource("tex_widow")
+region = Rect2(0, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_1"]
+atlas = ExtResource("tex_widow")
+region = Rect2(29, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_2"]
+atlas = ExtResource("tex_widow")
+region = Rect2(58, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_3"]
+atlas = ExtResource("tex_widow")
+region = Rect2(87, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_4"]
+atlas = ExtResource("tex_widow")
+region = Rect2(116, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_5"]
+atlas = ExtResource("tex_widow")
+region = Rect2(145, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_6"]
+atlas = ExtResource("tex_widow")
+region = Rect2(174, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_7"]
+atlas = ExtResource("tex_widow")
+region = Rect2(203, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_8"]
+atlas = ExtResource("tex_widow")
+region = Rect2(232, 0, 29, 28)
+
+[sub_resource type="AtlasTexture" id="widow_9"]
+atlas = ExtResource("tex_widow")
+region = Rect2(261, 0, 29, 28)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("ronin_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("ronin_7")
+}],
+"loop": true,
+"name": &"ronin",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("samurai_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("samurai_9")
+}],
+"loop": true,
+"name": &"samurai",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("lord_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("lord_9")
+}],
+"loop": true,
+"name": &"lord",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("villager_young_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_young_9")
+}],
+"loop": true,
+"name": &"villager_young",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("villager_old_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("villager_old_9")
+}],
+"loop": true,
+"name": &"villager_old",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("widow_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("widow_9")
+}],
+"loop": true,
+"name": &"widow",
+"speed": 7.0
+}]

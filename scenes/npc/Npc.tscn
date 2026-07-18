@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/npc/interactable_npc.gd" id="1"]
 [ext_resource type="Resource" path="res://data/dialogue/monk_intro.tres" id="2"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/npc/npc_frames.tres" id="3"]
 
 [sub_resource type="RectangleShape2D" id="body_shape"]
 size = Vector2(28, 28)
@@ -13,12 +14,11 @@ radius = 46.0
 script = ExtResource("1")
 dialogue = ExtResource("2")
 
-[node name="Body" type="ColorRect" parent="."]
-offset_left = -14.0
-offset_top = -14.0
-offset_right = 14.0
-offset_bottom = 14.0
-color = Color(0.72, 0.56, 0.4, 1)
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = ExtResource("3")
+animation = &"villager_young"
+autoplay = "villager_young"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("body_shape")
@@ -30,8 +30,8 @@ shape = SubResource("zone_shape")
 
 [node name="Prompt" type="Label" parent="."]
 offset_left = -48.0
-offset_top = -52.0
+offset_top = -96.0
 offset_right = 48.0
-offset_bottom = -30.0
+offset_bottom = -74.0
 horizontal_alignment = 1
 text = "E — talk"

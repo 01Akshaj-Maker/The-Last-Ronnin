@@ -20,6 +20,18 @@ verbatim).
   > Modify to suit your needs.
   > You are NOT allowed to turn any of my assets to an NFT.
 
+## Tiny Pixel Japan Male Character Pack — NPC sprites
+- **Author/creator:** Lynia Design (lyniadesign)
+- **Source:** https://lyniadesign.itch.io/tiny-pixel-japan-male-character-pack
+- **Used for:** village NPC characters. Sheets copied to `assets/characters/npc/`
+  (ronin/samurai/lord/villager.png; 29×28 frames, two colour variants each, side-view idle).
+  The **Thief** uses the Ronin, the **Child** uses the young Villager (scaled down).
+- **Modification:** `assets/characters/npc/widow.png` is a recolour of the pack's old-villager
+  variant (olive robe → indigo, hair lightened) to stand in for the **Widow**, since the pack
+  has no female sprite. Derived from this pack; same license applies.
+- **License:** Confirmed by the project owner: free for commercial use. (itch.io pack; no
+  license file shipped in the folder — usage rights confirmed directly by the owner.)
+
 <!--
 Entry template — copy per asset:
 
