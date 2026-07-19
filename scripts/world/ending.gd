@@ -65,7 +65,7 @@ func _configure_particles(mood: MoodData) -> void:
 
 
 func _process(_delta: float) -> void:
-	# TEMP (debug): replay from the top to try other routes. Remove with the debug harness.
+	# TEMP (debug): replay the whole journey from the intro. Remove with the debug harness.
 	if Input.is_action_just_pressed("debug_restart"):
-		Identity.reset()
-		get_tree().change_scene_to_file("res://scenes/world/Main.tscn")
+		set_process(false)
+		GameFlow.restart()

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GameFlowData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/game_flow_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/chapter_entry.gd" id="2"]
+
+[sub_resource type="Resource" id="ch_village"]
+script = ExtResource("2")
+scene_path = "res://scenes/world/Main.tscn"
+travel_text = "He traveled on. Days blurred into road, and road into rain.
+The village fell away behind him, and did not look back."
+
+[resource]
+script = ExtResource("1")
+intro_scene = "res://scenes/flow/Intro.tscn"
+intro_title = "The Last Ronin"
+intro_body = "The great war is over. Your lord is dead, your clan scattered, your sword cracked at the hilt.
+
+One duty is left to you: carry a final message across the land — though you cannot say who gave it to you, nor why.
+
+Walk on, samurai. The road is waiting."
+chapters = [SubResource("ch_village")]
+ending_scene = "res://scenes/ending/Ending.tscn"

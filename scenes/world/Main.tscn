@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" path="res://data/dialogue/village_widow.tres" id="7"]
 [ext_resource type="Resource" path="res://data/dialogue/village_thief.tres" id="8"]
 [ext_resource type="Resource" path="res://data/dialogue/village_child.tres" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/world/ChapterExit.tscn" id="10"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -22,9 +23,14 @@ color = Color(0.13, 0.15, 0.19, 1)
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="WallTop" parent="Environment" instance=ExtResource("6")]
-position = Vector2(0, -600)
-block_size = Vector2(1600, 40)
+[node name="WallTopLeft" parent="Environment" instance=ExtResource("6")]
+position = Vector2(-455, -600)
+block_size = Vector2(690, 40)
+block_color = Color(0.2, 0.2, 0.24, 1)
+
+[node name="WallTopRight" parent="Environment" instance=ExtResource("6")]
+position = Vector2(455, -600)
+block_size = Vector2(690, 40)
 block_color = Color(0.2, 0.2, 0.24, 1)
 
 [node name="WallLeft" parent="Environment" instance=ExtResource("6")]
@@ -91,6 +97,9 @@ block_color = Color(0.36, 0.32, 0.28, 1)
 position = Vector2(-140, 470)
 block_size = Vector2(24, 80)
 block_color = Color(0.3, 0.26, 0.22, 1)
+
+[node name="ChapterExit" parent="." instance=ExtResource("10")]
+position = Vector2(0, -582)
 
 [node name="Actors" type="Node2D" parent="."]
 y_sort_enabled = true
