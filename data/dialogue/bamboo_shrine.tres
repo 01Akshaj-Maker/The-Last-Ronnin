@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "War-Dead Shrine"
+body = "A stone crowded with names, carved small to fit the fallen of one bad year. Your fingers move down the rows without your bidding — and stop. One name near the bottom, where the moss has not yet reached. You do not read it. You already know the shape of it, the way a hand knows its own."
+variants = []
+choices = []

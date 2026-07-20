@@ -14,6 +14,10 @@ signal interacted(dialogue: DialogueData)
 
 ## Shown in the contextual prompt as "E — <verb>".
 @export var prompt_verb: String = "talk"
+## Objective beat this reports to the chapter guide when talked to (§4). Default "talked" so a
+## chapter whose objective advances on "talked" needs no per-NPC setup; set a specific beat
+## (e.g. "talked_mother") when only one particular NPC should advance the goal.
+@export var guide_event: String = "talked"
 
 @export_group("Appearance")
 ## Animation name in the Sprite's SpriteFrames (e.g. "widow", "ronin", "villager_young").

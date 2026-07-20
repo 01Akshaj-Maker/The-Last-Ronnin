@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "Among the Reeds"
+body = "A small bronze prayer bell, green with age, snagged low in the reeds. You lift it and it rings once — clear, and unbearably sad. Somewhere close, a grieving voice would know that sound anywhere."
+variants = []
+choices = []

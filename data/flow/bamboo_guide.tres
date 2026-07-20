@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ChapterGuideData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/chapter_guide_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/objective_step.gd" id="2"]
+
+[sub_resource type="Resource" id="obj_find"]
+script = ExtResource("2")
+text = "Search the bamboo for whatever rings among the reeds."
+advance_on = "found_bell"
+
+[sub_resource type="Resource" id="obj_bring"]
+script = ExtResource("2")
+text = "Bring the bell to the woman at the wayside shrine."
+advance_on = "talked_mother"
+
+[sub_resource type="Resource" id="obj_leave"]
+script = ExtResource("2")
+text = "Leave the forest — the road climbs north."
+advance_on = ""
+
+[resource]
+script = ExtResource("1")
+onboarding = PackedStringArray("The rain is behind you now. Only bamboo, and the green hush between the stalks.", "A small sound threads the quiet — a bell, or a bird that has learned to grieve like one. Something here is lost.")
+controls_hint = ""
+objectives = [SubResource("obj_find"), SubResource("obj_bring"), SubResource("obj_leave")]

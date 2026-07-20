@@ -10,8 +10,13 @@ signal interacted(dialogue: DialogueData)
 @export var dialogue: DialogueData
 ## Shown in the prompt as "E — <verb>" (e.g. "read", "examine").
 @export var prompt_verb: String = "examine"
+## Objective beat this reports to the chapter guide when examined (e.g. "found_bell"); empty
+## means examining it advances nothing (pure flavor). Matches ObjectiveStep.advance_on (§4).
+@export var guide_event: String = ""
 ## Solid footprint so the player bumps the prop instead of walking through it.
 @export var body_size: Vector2 = Vector2(24, 44)
+## Optional grey-box tint for a child ColorRect named "Body" (props with a single block look).
+@export var body_color: Color = Color(0.32, 0.28, 0.22, 1)
 @export var interact_radius: float = 74.0
 
 var _player_in_range: bool = false
@@ -28,6 +33,11 @@ func _ready() -> void:
 		_collision.shape.size = body_size
 	if _zone_shape.shape is CircleShape2D:
 		_zone_shape.shape.radius = interact_radius
+	var body: Node = get_node_or_null("Body")
+	if body is ColorRect:
+		body.color = body_color
+		body.size = body_size
+		body.position = -body_size / 2.0
 	_prompt.text = "E — %s" % prompt_verb
 	_zone.body_entered.connect(_on_body_entered)
 	_zone.body_exited.connect(_on_body_exited)

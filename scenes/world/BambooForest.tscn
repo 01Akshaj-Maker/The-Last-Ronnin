@@ -1,0 +1,190 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/npc/Npc.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/env/Block.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/world/ChapterExit.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ChapterGuide.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/props/Examinable.tscn" id="8"]
+[ext_resource type="Resource" path="res://data/flow/bamboo_guide.tres" id="9"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_mother.tres" id="10"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_beggar.tres" id="11"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_bell.tres" id="12"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_shrine.tres" id="13"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_helm.tres" id="14"]
+
+[node name="BambooForest" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = -800.0
+offset_top = -600.0
+offset_right = 800.0
+offset_bottom = 600.0
+color = Color(0.08, 0.13, 0.1, 1)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="WallTopLeft" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-455, -600)
+block_size = Vector2(690, 40)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="WallTopRight" parent="Environment" instance=ExtResource("5")]
+position = Vector2(455, -600)
+block_size = Vector2(690, 40)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="WallLeft" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-800, 0)
+block_size = Vector2(40, 1200)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="WallRight" parent="Environment" instance=ExtResource("5")]
+position = Vector2(800, 0)
+block_size = Vector2(40, 1200)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="WallBottomLeft" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-450, 600)
+block_size = Vector2(700, 40)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="WallBottomRight" parent="Environment" instance=ExtResource("5")]
+position = Vector2(450, 600)
+block_size = Vector2(700, 40)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
+[node name="Bamboo1" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-250, -150)
+block_size = Vector2(18, 150)
+block_color = Color(0.22, 0.44, 0.26, 1)
+
+[node name="Bamboo2" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-450, -250)
+block_size = Vector2(18, 130)
+block_color = Color(0.2, 0.4, 0.24, 1)
+
+[node name="Bamboo3" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-560, -50)
+block_size = Vector2(18, 160)
+block_color = Color(0.24, 0.46, 0.28, 1)
+
+[node name="Bamboo4" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-300, 200)
+block_size = Vector2(18, 140)
+block_color = Color(0.2, 0.4, 0.24, 1)
+
+[node name="Bamboo5" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-560, 250)
+block_size = Vector2(18, 150)
+block_color = Color(0.22, 0.44, 0.26, 1)
+
+[node name="Bamboo6" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-200, -360)
+block_size = Vector2(18, 130)
+block_color = Color(0.24, 0.46, 0.28, 1)
+
+[node name="Bamboo7" parent="Environment" instance=ExtResource("5")]
+position = Vector2(-630, 90)
+block_size = Vector2(18, 150)
+block_color = Color(0.2, 0.4, 0.24, 1)
+
+[node name="Bamboo8" parent="Environment" instance=ExtResource("5")]
+position = Vector2(300, -350)
+block_size = Vector2(18, 150)
+block_color = Color(0.22, 0.44, 0.26, 1)
+
+[node name="Bamboo9" parent="Environment" instance=ExtResource("5")]
+position = Vector2(520, -250)
+block_size = Vector2(18, 130)
+block_color = Color(0.24, 0.46, 0.28, 1)
+
+[node name="Bamboo10" parent="Environment" instance=ExtResource("5")]
+position = Vector2(630, -60)
+block_size = Vector2(18, 160)
+block_color = Color(0.2, 0.4, 0.24, 1)
+
+[node name="Bamboo11" parent="Environment" instance=ExtResource("5")]
+position = Vector2(560, 190)
+block_size = Vector2(18, 150)
+block_color = Color(0.22, 0.44, 0.26, 1)
+
+[node name="Bamboo12" parent="Environment" instance=ExtResource("5")]
+position = Vector2(300, 130)
+block_size = Vector2(18, 140)
+block_color = Color(0.24, 0.46, 0.28, 1)
+
+[node name="Bamboo13" parent="Environment" instance=ExtResource("5")]
+position = Vector2(470, 320)
+block_size = Vector2(18, 150)
+block_color = Color(0.2, 0.4, 0.24, 1)
+
+[node name="Bamboo14" parent="Environment" instance=ExtResource("5")]
+position = Vector2(650, 260)
+block_size = Vector2(18, 130)
+block_color = Color(0.22, 0.44, 0.26, 1)
+
+[node name="ShrineStone" parent="Environment" instance=ExtResource("5")]
+position = Vector2(250, -330)
+block_size = Vector2(80, 90)
+block_color = Color(0.28, 0.31, 0.28, 1)
+
+[node name="ChapterExit" parent="." instance=ExtResource("6")]
+position = Vector2(0, -582)
+
+[node name="Actors" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Actors" instance=ExtResource("2")]
+position = Vector2(0, 440)
+
+[node name="Mother" parent="Actors" instance=ExtResource("3")]
+position = Vector2(250, -250)
+dialogue = ExtResource("10")
+prompt_verb = "speak"
+guide_event = "talked_mother"
+npc_animation = &"widow"
+sprite_scale = Vector2(3.2, 3.2)
+sprite_offset = Vector2(0, -7)
+body_size = Vector2(40, 56)
+
+[node name="Beggar" parent="Actors" instance=ExtResource("3")]
+position = Vector2(-360, 90)
+dialogue = ExtResource("11")
+prompt_verb = "speak"
+guide_event = ""
+npc_animation = &"villager_old"
+sprite_scale = Vector2(3.2, 3.2)
+sprite_offset = Vector2(0, -7)
+sprite_flip_h = true
+body_size = Vector2(42, 56)
+
+[node name="Bell" parent="Actors" instance=ExtResource("8")]
+position = Vector2(400, -80)
+dialogue = ExtResource("12")
+prompt_verb = "search"
+guide_event = "found_bell"
+body_size = Vector2(26, 26)
+body_color = Color(0.52, 0.47, 0.24, 1)
+
+[node name="Shrine" parent="Actors" instance=ExtResource("8")]
+position = Vector2(160, -250)
+dialogue = ExtResource("13")
+prompt_verb = "read"
+body_size = Vector2(42, 58)
+body_color = Color(0.35, 0.38, 0.34, 1)
+
+[node name="Helm" parent="Actors" instance=ExtResource("8")]
+position = Vector2(-330, 300)
+dialogue = ExtResource("14")
+prompt_verb = "examine"
+body_size = Vector2(32, 22)
+body_color = Color(0.32, 0.26, 0.22, 1)
+
+[node name="ChapterGuide" parent="." instance=ExtResource("7")]
+data = ExtResource("9")
+
+[node name="DialogueUI" parent="." instance=ExtResource("4")]

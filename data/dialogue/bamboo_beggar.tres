@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_variant.gd" id="3"]
+
+[sub_resource type="Resource" id="variant_spared"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = ">="
+threshold = 2
+body = "You came up from the rainy village? Then you'll have heard of the rice-thief — the one who kept his hand. Word is a samurai showed him mercy at the crossroads instead of the magistrate. He came through here three days back, bound north, swore he'd steal no more. Small mercies travel farther than a man would think. Maybe farther than the man who gave them."
+
+[sub_resource type="Resource" id="variant_killed"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = "<="
+threshold = -1
+body = "You came up from the rainy village? Then maybe you passed what's left of the rice-thief. They took his hand for a fistful of rice — and a one-handed man can't work nor beg. They found him in a ditch a mile north, cold as the law that killed him. The road remembers that sort of thing. It remembers everything, this road."
+
+[resource]
+script = ExtResource("1")
+speaker = "Beggar Beneath the Bamboo"
+body = "Spare a coin? No — you've the look of a man with nothing to spare but distance. We're alike, then, you and I. The road uses us both and thanks neither. Sit a while, if you like. The bamboo keeps the wind off the dead."
+variants = [SubResource("variant_spared"), SubResource("variant_killed")]
+choices = []

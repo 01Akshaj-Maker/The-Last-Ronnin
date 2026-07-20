@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameFlowData" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="GameFlowData" load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/game_flow_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/chapter_entry.gd" id="2"]
@@ -6,8 +6,12 @@
 [sub_resource type="Resource" id="ch_village"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/Main.tscn"
-travel_text = "He traveled on. Days blurred into road, and road into rain.
-The village fell away behind him, and did not look back."
+travel_text = "He walked on, and the rain thinned to mist. The road narrowed, the grey fields gave way to green — and the bamboo closed over him like water."
+
+[sub_resource type="Resource" id="ch_bamboo"]
+script = ExtResource("2")
+scene_path = "res://scenes/world/BambooForest.tscn"
+travel_text = "The bamboo fell away behind him. The land began to climb — bare, and very quiet — toward the place the message had named, though he could not say how he knew the way."
 
 [resource]
 script = ExtResource("1")
@@ -18,5 +22,5 @@ intro_body = "The great war is over. Your lord is dead, your clan scattered, you
 One duty is left to you: carry a final message across the land — though you cannot say who gave it to you, nor why.
 
 Walk on, samurai. The road is waiting."
-chapters = [SubResource("ch_village")]
+chapters = [SubResource("ch_village"), SubResource("ch_bamboo")]
 ending_scene = "res://scenes/ending/Ending.tscn"
