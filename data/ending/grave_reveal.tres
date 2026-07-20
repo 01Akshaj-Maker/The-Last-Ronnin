@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GraveReveal" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/grave_reveal.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+lines = PackedStringArray("The road gives out here. No village at its end. No temple. No one waiting.", "Only a grave, alone in the tall grass — its stone worn soft with weather, and with years.", "You kneel to read the name cut into the stone. Your hand goes still against it.", "It is your own.", "You fell in the war, samurai. A long time ago. The rain that never touched you, the road your feet already knew, the name you would not read — not riddles. Only the world, telling you gently, the whole long way home.")
+line_fade = 1.4
+line_hold = 2.4
+settle = 1.8

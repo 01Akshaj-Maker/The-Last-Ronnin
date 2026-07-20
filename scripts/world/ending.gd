@@ -1,37 +1,88 @@
 extends Control
 
-## The grave — real ending assembly (Bible §3 "ending state", §6 visual mood).
-##
-## Reads the accumulated Identity counters and assembles two things:
-##   1. an EPITAPH, from data-driven conditional fragments (EpitaphData), and
+## The grave — arrival reveal (Bible §1 pitch, §4 twist) wrapped around the counter-driven
+## ending (§3, §6). Two things are unchanged and still purely data-driven:
+##   1. an EPITAPH assembled from conditional fragments (EpitaphData), and
 ##   2. a visual MOOD (palette + placeholder particles), chosen by "warmth" (MoodSet).
 ##
-## Both the epitaph fragments and the moods live in data (res://data/ending/), so new content
-## is a data edit, never a code edit (§9). The visuals here are deliberate placeholders — a
-## tinted ColorRect for light and CPUParticles2D squares for blossoms/snow. Real art/shaders
-## can replace them later: the selection logic below reads only from data and never changes.
+## What is new is only the TIMING and staging around them. The scene opens dark and quiet and
+## holds both back while a slow, restrained reveal plays (GraveReveal, all in data): the walk
+## up to the grave, the moment he reads his own name, and the seeded hints clicking into place.
+## Then the mood blooms and the epitaph assembles. The selection logic below is untouched.
 
 ## The grave is meant to land before anything invites the player to move on, so the
-## "begin again" prompt stays hidden and inert for this long, then fades in.
+## "begin again" prompt stays hidden and inert for this long after the reveal, then fades in.
 const REPLAY_DELAY: float = 3.5
+## Seconds for the mood + epitaph to fade up once the reveal has finished.
+const BLOOM_TIME: float = 2.4
+## The quiet near-dark the scene opens on, before the mood blooms in.
+const APPROACH_COLOR: Color = Color(0.05, 0.05, 0.06, 1)
 
 @export var epitaph: EpitaphData
 @export var mood_set: MoodSet
+@export var reveal: GraveReveal
 
 @onready var _background: ColorRect = $Background
 @onready var _tint: ColorRect = $Tint
 @onready var _particles: CPUParticles2D = $Particles
+@onready var _title_label: Label = $Center/VBox/Title
 @onready var _epitaph_label: Label = $Center/VBox/Epitaph
 @onready var _caption_label: Label = $Center/VBox/Caption
 @onready var _hint_label: Label = $Center/VBox/Hint
+@onready var _reveal_label: Label = $Reveal
 
 var _can_replay: bool = false
 
 
 func _ready() -> void:
-	_apply_mood(mood_set.pick(_warmth()) if mood_set != null else null)
+	# Open on a quiet dark and hold the mood + epitaph back for the reveal.
+	_background.color = APPROACH_COLOR
+	_tint.color = Color(1, 1, 1, 0)
+	_particles.emitting = false
+	_title_label.modulate.a = 0.0
+	_epitaph_label.modulate.a = 0.0
+	_caption_label.modulate.a = 0.0
+	_hint_label.modulate.a = 0.0
+	_reveal_label.modulate.a = 0.0
+	# Assemble the epitaph now (from the counters), but keep it hidden until the reveal ends.
 	if epitaph != null:
 		_epitaph_label.text = epitaph.assemble()
+	_play_reveal()
+
+
+## The slow, quiet reveal — one restrained line at a time over the dark approach (§4, §6). Pure
+## presentation: it shows GraveReveal.lines and never touches the counters.
+func _play_reveal() -> void:
+	if reveal != null:
+		for line in reveal.lines:
+			if not is_inside_tree():
+				return
+			_reveal_label.text = line
+			var t_in: Tween = create_tween()
+			t_in.tween_property(_reveal_label, "modulate:a", 0.92, reveal.line_fade)
+			await t_in.finished
+			await get_tree().create_timer(reveal.line_hold).timeout
+			if not is_inside_tree():
+				return
+			var t_out: Tween = create_tween()
+			t_out.tween_property(_reveal_label, "modulate:a", 0.0, reveal.line_fade)
+			await t_out.finished
+		await get_tree().create_timer(reveal.settle).timeout
+	if not is_inside_tree():
+		return
+	_bloom()
+
+
+## After the reveal, the counter-driven payoff fades up: the mood (warm/cold) and the epitaph.
+## The selection (warmth -> mood, epitaph.assemble) already happened; here we only reveal it.
+func _bloom() -> void:
+	_apply_mood(mood_set.pick(_warmth()) if mood_set != null else null)
+	var tween: Tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(_title_label, "modulate:a", 1.0, BLOOM_TIME)
+	tween.tween_property(_epitaph_label, "modulate:a", 1.0, BLOOM_TIME)
+	tween.tween_property(_caption_label, "modulate:a", 1.0, BLOOM_TIME)
+	await tween.finished
 	_arm_replay()
 
 
@@ -45,10 +96,13 @@ func _warmth() -> int:
 func _apply_mood(mood: MoodData) -> void:
 	if mood == null:
 		return
-	_background.color = mood.background_color
-	_tint.color = mood.tint_color
 	_caption_label.text = mood.caption
 	_configure_particles(mood)
+	# Bloom the light in rather than snapping it on — the mood arriving with the epitaph.
+	var tween: Tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(_background, "color", mood.background_color, BLOOM_TIME)
+	tween.tween_property(_tint, "color", mood.tint_color, BLOOM_TIME)
 
 
 func _configure_particles(mood: MoodData) -> void:
