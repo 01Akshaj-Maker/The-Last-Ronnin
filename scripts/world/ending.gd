@@ -11,6 +11,10 @@ extends Control
 ## tinted ColorRect for light and CPUParticles2D squares for blossoms/snow. Real art/shaders
 ## can replace them later: the selection logic below reads only from data and never changes.
 
+## The grave is meant to land before anything invites the player to move on, so the
+## "begin again" prompt stays hidden and inert for this long, then fades in.
+const REPLAY_DELAY: float = 3.5
+
 @export var epitaph: EpitaphData
 @export var mood_set: MoodSet
 
@@ -19,12 +23,16 @@ extends Control
 @onready var _particles: CPUParticles2D = $Particles
 @onready var _epitaph_label: Label = $Center/VBox/Epitaph
 @onready var _caption_label: Label = $Center/VBox/Caption
+@onready var _hint_label: Label = $Center/VBox/Hint
+
+var _can_replay: bool = false
 
 
 func _ready() -> void:
 	_apply_mood(mood_set.pick(_warmth()) if mood_set != null else null)
 	if epitaph != null:
 		_epitaph_label.text = epitaph.assemble()
+	_arm_replay()
 
 
 ## Warmth of the life just lived. Mercy and selflessness read warm; attachment (clinging,
@@ -64,8 +72,17 @@ func _configure_particles(mood: MoodData) -> void:
 	_particles.scale_amount_max = 6.0
 
 
+## Hold the "begin again" prompt back until the grave has had a moment to land, then fade
+## it in and allow the replay. Keeps the ending from feeling like a menu.
+func _arm_replay() -> void:
+	_hint_label.modulate.a = 0.0
+	await get_tree().create_timer(REPLAY_DELAY).timeout
+	_can_replay = true
+	var tween: Tween = create_tween()
+	tween.tween_property(_hint_label, "modulate:a", 1.0, 1.2)
+
+
 func _process(_delta: float) -> void:
-	# TEMP (debug): replay the whole journey from the intro. Remove with the debug harness.
-	if Input.is_action_just_pressed("debug_restart"):
+	if _can_replay and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept")):
 		set_process(false)
 		GameFlow.restart()

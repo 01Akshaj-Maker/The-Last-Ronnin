@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
@@ -9,7 +9,14 @@ script = ExtResource("3")
 axis = "Mercy"
 comparator = ">="
 threshold = 2
-body = "The rice-thief still has both his hands — and his children ate tonight, first time in days. They say that mercy was yours, stranger. Bless you for it. Kindness has grown so rare in this war I had near forgotten its face."
+body = "Word runs ahead of a man on this road. They say yours is a gentler hand than most that carry a sword — that you stay the blade where other men would let it fall. Mercy, in a time like this. Bless you for it; I had near forgotten its face."
+
+[sub_resource type="Resource" id="variant_punished"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = "<="
+threshold = -1
+body = "They say you keep the old law to the letter, stranger — that your hand doesn't waver, whatever it costs the wretch beneath it. Well. The law is fed, at least. Hard times make hard men, I suppose."
 
 [sub_resource type="Resource" id="choice_a"]
 script = ExtResource("2")
@@ -29,6 +36,6 @@ effects = {
 [resource]
 script = ExtResource("1")
 speaker = "Widow by the Shrine"
-body = "They took the rice-thief's hand at the crossroads this morning — I hear you gave him to the magistrate without a flicker. Well. The law is fed, at least. Hard times make hard men, I suppose."
-variants = [SubResource("variant_mercy")]
+body = "This village has buried more sons than it has left to feed. You have the look of the road on you, stranger — passing through, like everything does now. Even kindness. Even grief."
+variants = [SubResource("variant_mercy"), SubResource("variant_punished")]
 choices = [SubResource("choice_a"), SubResource("choice_b")]

@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/npc/Npc.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/debug/DebugJump.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/env/Block.tscn" id="6"]
 [ext_resource type="Resource" path="res://data/dialogue/village_widow.tres" id="7"]
 [ext_resource type="Resource" path="res://data/dialogue/village_thief.tres" id="8"]
 [ext_resource type="Resource" path="res://data/dialogue/village_child.tres" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/world/ChapterExit.tscn" id="10"]
+[ext_resource type="Resource" path="res://data/dialogue/monk_intro.tres" id="11"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -69,7 +69,7 @@ block_size = Vector2(240, 170)
 block_color = Color(0.28, 0.26, 0.3, 1)
 
 [node name="Temple" parent="Environment" instance=ExtResource("6")]
-position = Vector2(30, -400)
+position = Vector2(-330, -465)
 block_size = Vector2(240, 220)
 block_color = Color(0.32, 0.3, 0.36, 1)
 
@@ -108,7 +108,7 @@ y_sort_enabled = true
 position = Vector2(0, 440)
 
 [node name="Widow" parent="Actors" instance=ExtResource("3")]
-position = Vector2(30, -210)
+position = Vector2(70, -210)
 dialogue = ExtResource("7")
 npc_animation = &"widow"
 sprite_scale = Vector2(3.2, 3.2)
@@ -132,6 +132,12 @@ sprite_scale = Vector2(2.4, 2.4)
 sprite_offset = Vector2(0, -8)
 body_size = Vector2(30, 42)
 
-[node name="DialogueUI" parent="." instance=ExtResource("4")]
+[node name="Monk" parent="Actors" instance=ExtResource("3")]
+position = Vector2(150, -60)
+dialogue = ExtResource("11")
+npc_animation = &"villager_old"
+sprite_scale = Vector2(3.2, 3.2)
+sprite_offset = Vector2(0, -7)
+body_size = Vector2(42, 56)
 
-[node name="DebugJump" parent="." instance=ExtResource("5")]
+[node name="DialogueUI" parent="." instance=ExtResource("4")]

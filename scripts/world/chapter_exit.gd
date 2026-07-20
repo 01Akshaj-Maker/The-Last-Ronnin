@@ -12,5 +12,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		monitoring = false  # one-shot; don't fire again mid-transition
+		# One-shot; don't fire again mid-transition. Must be deferred: Godot blocks changing
+		# monitoring directly inside a body_entered callback.
+		set_deferred("monitoring", false)
 		GameFlow.advance_chapter()
