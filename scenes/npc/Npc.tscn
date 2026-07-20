@@ -11,7 +11,7 @@ size = Vector2(42, 56)
 [sub_resource type="CircleShape2D" id="zone_shape"]
 radius = 60.0
 
-[node name="Npc" type="StaticBody2D" groups=["npc"]]
+[node name="Npc" type="StaticBody2D" groups=["interactable", "npc"]]
 script = ExtResource("1")
 dialogue = ExtResource("2")
 

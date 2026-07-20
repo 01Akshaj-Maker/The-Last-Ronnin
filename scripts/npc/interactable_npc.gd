@@ -12,6 +12,9 @@ signal interacted(dialogue: DialogueData)
 
 @export var dialogue: DialogueData
 
+## Shown in the contextual prompt as "E — <verb>".
+@export var prompt_verb: String = "talk"
+
 @export_group("Appearance")
 ## Animation name in the Sprite's SpriteFrames (e.g. "widow", "ronin", "villager_young").
 @export var npc_animation: StringName = &"villager_young"
@@ -26,7 +29,7 @@ signal interacted(dialogue: DialogueData)
 var _player_in_range: bool = false
 var _enabled: bool = true
 
-@onready var _prompt: CanvasItem = $Prompt
+@onready var _prompt: Label = $Prompt
 @onready var _zone: Area2D = $InteractZone
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var _collision: CollisionShape2D = $Collision
@@ -35,6 +38,7 @@ var _enabled: bool = true
 func _ready() -> void:
 	_apply_appearance()
 	_apply_collision()
+	_prompt.text = "E — %s" % prompt_verb
 	_zone.body_entered.connect(_on_body_entered)
 	_zone.body_exited.connect(_on_body_exited)
 	_refresh_prompt()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "Weathered Signpost"
+body = "The characters have worn to ghosts — all but one. An arrow, pointing north: the road out of the valley, toward the mountains. Your feet already lean that way, though you cannot say why."
+variants = []
+choices = []

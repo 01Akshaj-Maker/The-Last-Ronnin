@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ChapterGuideData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/chapter_guide_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/objective_step.gd" id="2"]
+
+[sub_resource type="Resource" id="obj_talk"]
+script = ExtResource("2")
+text = "Speak with those who still linger here."
+advance_on = "talked"
+
+[sub_resource type="Resource" id="obj_leave"]
+script = ExtResource("2")
+text = "When you are ready, leave by the road north."
+advance_on = ""
+
+[resource]
+script = ExtResource("1")
+onboarding = PackedStringArray("Another village the war has hollowed out. Strange — my feet knew the road here, though I have never walked it.", "Someone among them may know what message I carry. And why.")
+controls_hint = "move — WASD / arrows           speak — E"
+objectives = [SubResource("obj_talk"), SubResource("obj_leave")]

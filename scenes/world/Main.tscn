@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
@@ -10,6 +10,10 @@
 [ext_resource type="Resource" path="res://data/dialogue/village_child.tres" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/world/ChapterExit.tscn" id="10"]
 [ext_resource type="Resource" path="res://data/dialogue/monk_intro.tres" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/props/Signpost.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/ui/ChapterGuide.tscn" id="13"]
+[ext_resource type="Resource" path="res://data/flow/village_guide.tres" id="14"]
+[ext_resource type="Resource" path="res://data/dialogue/village_signpost.tres" id="15"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -93,13 +97,13 @@ position = Vector2(602, 128)
 block_size = Vector2(46, 46)
 block_color = Color(0.36, 0.32, 0.28, 1)
 
-[node name="Signboard" parent="Environment" instance=ExtResource("6")]
-position = Vector2(-140, 470)
-block_size = Vector2(24, 80)
-block_color = Color(0.3, 0.26, 0.22, 1)
-
 [node name="ChapterExit" parent="." instance=ExtResource("10")]
 position = Vector2(0, -582)
+
+[node name="Signpost" parent="." instance=ExtResource("12")]
+position = Vector2(-90, 415)
+dialogue = ExtResource("15")
+prompt_verb = "read"
 
 [node name="Actors" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -139,5 +143,8 @@ npc_animation = &"villager_old"
 sprite_scale = Vector2(3.2, 3.2)
 sprite_offset = Vector2(0, -7)
 body_size = Vector2(42, 56)
+
+[node name="ChapterGuide" parent="." instance=ExtResource("13")]
+data = ExtResource("14")
 
 [node name="DialogueUI" parent="." instance=ExtResource("4")]

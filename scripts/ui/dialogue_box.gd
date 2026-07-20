@@ -21,6 +21,7 @@ signal closed
 	$Root/Panel/Margin/VBox/Choices/Choice0/Label,
 	$Root/Panel/Margin/VBox/Choices/Choice1/Label,
 ]
+@onready var _hint_label: Label = $Root/Panel/Margin/VBox/Hint
 
 const _COLOR_SELECTED: Color = Color(1, 1, 1, 1)
 const _COLOR_DIMMED: Color = Color(0.55, 0.55, 0.6, 1)
@@ -47,6 +48,7 @@ func open(data: DialogueData) -> void:
 		_choice_rows[i].visible = has_choice
 		if has_choice:
 			_choice_labels[i].text = data.choices[i].text
+	_hint_label.text = "Enter to continue" if data.choices.is_empty() else "Up / Down to choose      Enter to confirm"
 	_is_open = true
 	_armed = false
 	visible = true
@@ -62,6 +64,10 @@ func _process(_delta: float) -> void:
 		return
 	var count: int = _data.choices.size()
 	if count == 0:
+		# A choiceless line (e.g. an examined object): interact/Enter just dismisses it.
+		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept"):
+			_close_immediately()
+			closed.emit()
 		return
 	if Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_left"):
 		_selected = (_selected - 1 + count) % count
