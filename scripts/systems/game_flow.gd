@@ -87,7 +87,7 @@ func _show_card(text: String) -> void:
 	var t_in: Tween = create_tween()
 	t_in.tween_property(_card, "modulate:a", 1.0, CARD_FADE)
 	await t_in.finished
-	await get_tree().create_timer(CARD_HOLD).timeout
+	await get_tree().create_timer(ReadingTime.hold_for(text, CARD_HOLD)).timeout
 	var t_out: Tween = create_tween()
 	t_out.tween_property(_card, "modulate:a", 0.0, CARD_FADE)
 	await t_out.finished

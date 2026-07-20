@@ -75,7 +75,7 @@ func _play_onboarding() -> void:
 		var t_in: Tween = create_tween()
 		t_in.tween_property(_thought, "modulate:a", THOUGHT_ALPHA, 0.9)
 		await t_in.finished
-		await get_tree().create_timer(THOUGHT_HOLD).timeout
+		await get_tree().create_timer(ReadingTime.hold_for(line, THOUGHT_HOLD)).timeout
 		if not is_inside_tree():
 			return
 		var t_out: Tween = create_tween()

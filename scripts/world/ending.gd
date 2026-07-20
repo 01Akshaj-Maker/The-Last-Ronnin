@@ -61,7 +61,7 @@ func _play_reveal() -> void:
 			var t_in: Tween = create_tween()
 			t_in.tween_property(_reveal_label, "modulate:a", 0.92, reveal.line_fade)
 			await t_in.finished
-			await get_tree().create_timer(reveal.line_hold).timeout
+			await get_tree().create_timer(ReadingTime.hold_for(line, reveal.line_hold)).timeout
 			if not is_inside_tree():
 				return
 			var t_out: Tween = create_tween()
