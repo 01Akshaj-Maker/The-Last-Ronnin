@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "The Slope Below"
+body = "You stop, and turn to see how far the climb has carried you. The mountainside falls away beneath you — smooth, white, and utterly unbroken. No trail. No tracks. Not one footprint to say a man passed this way, though you have been climbing since the bamboo. The snow lies as if it never felt your weight at all. As if you had none to give. You look, for a long moment, at your own two hands — and you do not let yourself finish the thought."
+variants = []
+choices = []

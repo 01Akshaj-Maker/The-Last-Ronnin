@@ -5,8 +5,16 @@ extends Area2D
 ## the last). Drop one into any chapter scene at its exit — adding a chapter is that plus a
 ## GameFlowData entry, no code (§9).
 
+## Optional per-chapter override for the exit signpost text (§4 "clear exit"). Leave empty to
+## keep the scene's default label — set it when a chapter needs its own wording (e.g. a pass).
+@export var sign_text: String = ""
+
+@onready var _hint: Label = $Hint
+
 
 func _ready() -> void:
+	if sign_text != "" and _hint != null:
+		_hint.text = sign_text
 	body_entered.connect(_on_body_entered)
 
 

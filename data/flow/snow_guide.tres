@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ChapterGuideData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/chapter_guide_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/objective_step.gd" id="2"]
+
+[sub_resource type="Resource" id="obj_climb"]
+script = ExtResource("2")
+text = "Climb the pass — find the old shrine above the storm."
+advance_on = "reached_warden"
+
+[sub_resource type="Resource" id="obj_rival"]
+script = ExtResource("2")
+text = "A dying man lies in the snow beyond the shrine. Go to him."
+advance_on = "faced_rival"
+
+[sub_resource type="Resource" id="obj_leave"]
+script = ExtResource("2")
+text = "Cross the pass. The end of the road lies below."
+advance_on = ""
+
+[resource]
+script = ExtResource("1")
+onboarding = PackedStringArray("Higher than the birds now. Higher than the war ever reached. The cold at this height should be unbearable — should be. It is only quiet.", "One more climb, samurai. One more, and the long road runs out at last.")
+controls_hint = ""
+objectives = [SubResource("obj_climb"), SubResource("obj_rival"), SubResource("obj_leave")]

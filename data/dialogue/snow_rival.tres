@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
+
+[sub_resource type="Resource" id="choice_mercy"]
+script = ExtResource("2")
+text = "Kneel, and give an old enemy the clean death a warrior is owed."
+effects = {
+"Honor": 3,
+"Mercy": 2
+}
+
+[sub_resource type="Resource" id="choice_cold"]
+script = ExtResource("2")
+text = "Let the war have its last word. Turn, and leave him to the slow cold."
+effects = {
+"Attachment": 3,
+"Mercy": -2
+}
+
+[resource]
+script = ExtResource("1")
+speaker = "A Fallen Enemy"
+body = "You know this face. Older, greyer, half-buried in snow — but you know it, from the wrong end of a hundred spears, in the war that ended everything you had. He is broken beyond any saving, and the cold is taking him slow. His eyes find you, and something in them is almost glad. \"So. They sent you, of all the ghosts they could have sent. Finish it, old enemy — or don't. I find, at the end, I no longer much care which.\""
+variants = []
+choices = [SubResource("choice_mercy"), SubResource("choice_cold")]

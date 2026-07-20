@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_variant.gd" id="3"]
+
+[sub_resource type="Resource" id="variant_merciful"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = ">="
+threshold = 3
+body = "The wind carries word, even this high, where little else can reach. They say a gentleness came down with you out of the rainy village and through the bamboo dark — a blade stayed at a crossroads, a grief you would not leave to weep alone. Small kindnesses, in a world that had forgotten the shape of them. Rare, in a man who carries a sword. Rarer still, up here. The dead remember kindness longer than the living trouble to, samurai. You would know that, perhaps, better than you think."
+
+[sub_resource type="Resource" id="variant_hard"]
+script = ExtResource("3")
+axis = "Mercy"
+comparator = "<="
+threshold = -1
+body = "The wind carries word, even this high. They say a hardness came down with you out of the rainy village and through the bamboo shade — the old law kept to its cruel letter, a griever left alone with her grief. Cold, the road names you. Cold as this pass, and as patient. The mountain does not mind the cold. It knows its own kind when they climb this far. Did you truly never wonder why the snow does not trouble you?"
+
+[resource]
+script = ExtResource("1")
+speaker = "Warden of the Pass"
+body = "Few climb as high as this. Fewer still who are... all the way here. The wind pares a man down to what he truly is, and what stands in front of me presses no more weight into the snow than a cold thought does. You have the grey and distant look of the ones who cross outward, samurai — away from the world, not back toward it. When did you last feel the cold? When did you last need to eat, or to sleep, or to bleed? No — do not answer me. Some doors are kinder left closed a little while longer."
+variants = [SubResource("variant_merciful"), SubResource("variant_hard")]
+choices = []
