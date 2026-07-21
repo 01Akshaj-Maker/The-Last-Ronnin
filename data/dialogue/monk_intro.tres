@@ -11,6 +11,7 @@ effects = {
 "Mercy": -1,
 "Selflessness": 1
 }
+reply = "The old monk regards you a long moment. \"Duty is a clean word we tie to heavy things. Mind it does not become the only thing they can carve of you.\" He bows, and says no more."
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
@@ -19,6 +20,7 @@ effects = {
 "Attachment": -1,
 "Mercy": 2
 }
+reply = "A faint, sad smile creases his face. \"Gentleness, from a hand the war trained to kill — that is the harder discipline by far. Walk on, samurai. Your road is very nearly walked.\""
 
 [resource]
 script = ExtResource("1")

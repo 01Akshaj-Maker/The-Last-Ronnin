@@ -10,6 +10,7 @@ effects = {
 "Honor": 2,
 "Mercy": -2
 }
+reply = "He doesn't plead. He only holds out his hand and looks away, toward the houses where his children wait. \"Make it quick, then. They shouldn't have to watch their father learn what the law costs.\""
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
@@ -19,6 +20,7 @@ effects = {
 "Mercy": 3,
 "Selflessness": 1
 }
+reply = "He stares at the rice in his hands as if he'd forgotten what it was for. \"...I won't touch another man's grain again. I swear it — on them, on all of it.\" And then he is gone, running for once toward something instead of away from it."
 
 [resource]
 script = ExtResource("1")

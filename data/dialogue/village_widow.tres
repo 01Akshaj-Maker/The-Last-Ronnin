@@ -24,6 +24,7 @@ text = "The moment asked, and I answered it."
 effects = {
 "Honor": 1
 }
+reply = "She nods, slow and unsurprised. \"Aye. Duty's the one thing this valley has never run short of.\" She turns back to the little shrine. \"Carry it gently, if the road lets you.\""
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
@@ -32,6 +33,7 @@ effects = {
 "Mercy": 1,
 "Selflessness": 1
 }
+reply = "Something in her weathered face eases. \"Then there's a little kindness left in the world after all. Go on, stranger — I hope what you carry is gentler than the news that usually comes up this road.\""
 
 [resource]
 script = ExtResource("1")

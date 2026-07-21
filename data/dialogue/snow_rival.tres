@@ -10,6 +10,7 @@ effects = {
 "Honor": 3,
 "Mercy": 2
 }
+reply = "You kneel. The stroke is quick and clean — kinder than the war ever was to either of you. His breath leaves him like a man setting down a weight he has carried too far. Whatever he was, he dies an enemy no longer: only a soldier, gone home a little ahead of you."
 
 [sub_resource type="Resource" id="choice_cold"]
 script = ExtResource("2")
@@ -18,6 +19,7 @@ effects = {
 "Attachment": 3,
 "Mercy": -2
 }
+reply = "You turn your back. Behind you the ragged breathing goes on a while, then thins, then stops, and the snow keeps falling on you both the same. The war has its last word after all. Strange — you thought it would sound like something more than this."
 
 [resource]
 script = ExtResource("1")

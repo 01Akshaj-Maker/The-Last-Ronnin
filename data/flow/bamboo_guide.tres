@@ -20,6 +20,6 @@ advance_on = ""
 
 [resource]
 script = ExtResource("1")
-onboarding = PackedStringArray("The rain is behind you now. Only bamboo, and the green hush between the stalks.", "A small sound threads the quiet — a bell, or a bird that has learned to grieve like one. Something here is lost.")
+onboarding = PackedStringArray("The rain is behind you now. Only bamboo, and the green hush between the stalks.", "A small sound threads the green quiet — a bell, ringing somewhere among the stalks. Something here is lost, and it is still calling.")
 controls_hint = ""
 objectives = [SubResource("obj_find"), SubResource("obj_bring"), SubResource("obj_leave")]

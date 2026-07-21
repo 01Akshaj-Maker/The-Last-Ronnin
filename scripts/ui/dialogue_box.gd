@@ -31,6 +31,8 @@ var _selected: int = 0
 var _is_open: bool = false
 # The raw choice text, so the selection marker can be re-prefixed without doubling up.
 var _choice_texts: Array[String] = ["", ""]
+# True while showing a picked choice's follow-up reply (a closing, player-paced beat).
+var _awaiting_reply: bool = false
 # Ignore the interact key until it is released once, so the same press that opens the box
 # cannot immediately confirm a choice.
 var _armed: bool = false
@@ -55,6 +57,7 @@ func open(data: DialogueData) -> void:
 			_choice_texts[i] = data.choices[i].text
 	_hint_label.text = "Enter to continue" if data.choices.is_empty() else "Up / Down to choose      Enter to confirm"
 	_is_open = true
+	_awaiting_reply = false
 	_armed = false
 	visible = true
 	_update_highlight()
@@ -66,6 +69,12 @@ func _process(_delta: float) -> void:
 	if not _armed:
 		if not Input.is_action_pressed("interact"):
 			_armed = true
+		return
+	if _awaiting_reply:
+		# The speaker's reaction to the picked choice: dismiss it to end the conversation.
+		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept"):
+			_close_immediately()
+			closed.emit()
 		return
 	var count: int = _data.choices.size()
 	if count == 0:
@@ -112,6 +121,16 @@ func _update_highlight() -> void:
 func _confirm() -> void:
 	var choice: DialogueChoice = _data.choices[_selected]
 	var index: int = _selected
-	_close_immediately()
+	# Apply the choice's recorded effects now (Main listens); the conversation may go on.
 	choice_selected.emit(index, choice)
-	closed.emit()
+	if choice.reply != "":
+		# Let the speaker react before closing — one player-paced line, no new choices.
+		_awaiting_reply = true
+		_armed = false
+		_body_label.text = choice.reply
+		for row in _choice_rows:
+			row.visible = false
+		_hint_label.text = "Enter to continue"
+	else:
+		_close_immediately()
+		closed.emit()

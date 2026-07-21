@@ -10,6 +10,7 @@ effects = {
 "Selflessness": 1,
 "Attachment": -1
 }
+reply = "She backs a few steps toward the houses, then stops and looks at you over her shoulder. \"...You won't be here when I get home. Will you.\" It isn't quite a question. She turns and runs."
 
 [sub_resource type="Resource" id="choice_b"]
 script = ExtResource("2")
@@ -17,6 +18,7 @@ text = "Stay. Tell me what your grandmother sees."
 effects = {
 "Attachment": 2
 }
+reply = "She leans in, whispering it like a secret too big for her. \"She says there's a light that walks in front of you — not behind, the way a shadow should. Like something's already waiting where you're going.\" Then she steps back, suddenly shy. \"...I have to go now. Bye, mister.\""
 
 [resource]
 script = ExtResource("1")

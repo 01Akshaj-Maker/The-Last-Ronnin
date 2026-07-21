@@ -18,6 +18,7 @@ effects = {
 "Mercy": 2,
 "Selflessness": 1
 }
+reply = "She closes both hands around the little bell and weeps, and you stay — a stranger's quiet the only comfort you have to give. When at last she looks up, the road feels a fraction lighter on your shoulders, its weight set down somewhere you cannot name."
 
 [sub_resource type="Resource" id="choice_go"]
 script = ExtResource("2")
@@ -26,6 +27,7 @@ effects = {
 "Honor": 1,
 "Attachment": -1
 }
+reply = "She folds her fingers over the bell and nods, almost soldier to soldier. \"Go on, then. You've your road, and mine ends here, with him.\" The bow you give her is the closest thing to a prayer you still remember."
 
 [resource]
 script = ExtResource("1")

@@ -57,6 +57,11 @@ position = Vector2(450, 600)
 block_size = Vector2(700, 40)
 block_color = Color(0.1, 0.16, 0.12, 1)
 
+[node name="WallBottomMid" parent="Environment" instance=ExtResource("5")]
+position = Vector2(0, 600)
+block_size = Vector2(220, 40)
+block_color = Color(0.1, 0.16, 0.12, 1)
+
 [node name="Bamboo1" parent="Environment" instance=ExtResource("5")]
 position = Vector2(-250, -150)
 block_size = Vector2(18, 150)
