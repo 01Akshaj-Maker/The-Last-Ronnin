@@ -70,11 +70,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 text = "Here lies a ronin."
 
-[node name="Caption" type="Label" parent="Center/VBox"]
+[node name="StatsTitle" type="Label" parent="Center/VBox"]
 layout_mode = 2
 horizontal_alignment = 1
-modulate = Color(0.68, 0.68, 0.72, 1)
-text = "a still, grey quiet"
+modulate = Color(0.55, 0.55, 0.6, 1)
+theme_override_font_sizes/font_size = 13
+text = "— the measure of the road walked —"
+
+[node name="Stats" type="Label" parent="Center/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+modulate = Color(0.82, 0.8, 0.76, 1)
+theme_override_font_sizes/font_size = 17
+text = "Honor 0      Mercy 0      Attachment 0      Selflessness 0"
 
 [node name="Hint" type="Label" parent="Center/VBox"]
 layout_mode = 2

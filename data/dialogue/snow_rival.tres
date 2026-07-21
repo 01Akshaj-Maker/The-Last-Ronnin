@@ -10,7 +10,7 @@ effects = {
 "Honor": 3,
 "Mercy": 2
 }
-reply = "You kneel. The stroke is quick and clean — kinder than the war ever was to either of you. His breath leaves him like a man setting down a weight he has carried too far. Whatever he was, he dies an enemy no longer: only a soldier, gone home a little ahead of you."
+reply = "You kneel. The stroke is quick and clean — kinder than the war ever was. His breath leaves him like a man setting down a weight carried too far. He dies an enemy no longer — only a soldier, gone home a little ahead of you."
 
 [sub_resource type="Resource" id="choice_cold"]
 script = ExtResource("2")
@@ -19,11 +19,11 @@ effects = {
 "Attachment": 3,
 "Mercy": -2
 }
-reply = "You turn your back. Behind you the ragged breathing goes on a while, then thins, then stops, and the snow keeps falling on you both the same. The war has its last word after all. Strange — you thought it would sound like something more than this."
+reply = "You turn your back. Behind you the breathing goes on a while, then thins, then stops. The snow falls on you both the same. The war has its last word — and it sounds like nothing at all."
 
 [resource]
 script = ExtResource("1")
 speaker = "A Fallen Enemy"
-body = "You know this face. Older, greyer, half-buried in snow — but you know it, from the wrong end of a hundred spears, in the war that ended everything you had. He is broken beyond any saving, and the cold is taking him slow. His eyes find you, and something in them is almost glad. \"So. They sent you, of all the ghosts they could have sent. Finish it, old enemy — or don't. I find, at the end, I no longer much care which.\""
+body = "You know this face — older, greyer, half-buried in snow, but you know it, from the wrong end of a hundred spears. He is broken beyond saving, and the cold is taking him slow. His eyes find you, almost glad. \"So. They sent you, of all the ghosts. Finish it, old enemy — or don't. At the end, I find I no longer care which.\""
 variants = []
 choices = [SubResource("choice_mercy"), SubResource("choice_cold")]

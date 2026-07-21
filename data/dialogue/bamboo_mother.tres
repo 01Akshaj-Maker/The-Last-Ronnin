@@ -9,7 +9,7 @@ script = ExtResource("3")
 axis = "Mercy"
 comparator = ">="
 threshold = 2
-body = "Word of you came up the road before you did, samurai — a gentle hand, they said, for a man who carries a sword. I had stopped believing such men were left. And now you bring me his bell. Sit. Please. Just a moment."
+body = "Word of you came up the road ahead of you — a gentle hand, they said, for a man with a sword. I had stopped believing such men were left. And now you bring me his bell. Sit. Please."
 
 [sub_resource type="Resource" id="choice_stay"]
 script = ExtResource("2")
@@ -18,7 +18,7 @@ effects = {
 "Mercy": 2,
 "Selflessness": 1
 }
-reply = "She closes both hands around the little bell and weeps, and you stay — a stranger's quiet the only comfort you have to give. When at last she looks up, the road feels a fraction lighter on your shoulders, its weight set down somewhere you cannot name."
+reply = "She closes both hands around the bell and weeps, and you stay — a stranger's quiet the only comfort you have. When she looks up at last, the road feels a little lighter on your shoulders."
 
 [sub_resource type="Resource" id="choice_go"]
 script = ExtResource("2")
@@ -27,11 +27,11 @@ effects = {
 "Honor": 1,
 "Attachment": -1
 }
-reply = "She folds her fingers over the bell and nods, almost soldier to soldier. \"Go on, then. You've your road, and mine ends here, with him.\" The bow you give her is the closest thing to a prayer you still remember."
+reply = "She folds her fingers over the bell and nods, almost soldier to soldier. \"Go on, then. You've your road, and mine ends here, with him.\" The bow you give her is the closest thing to a prayer you remember."
 
 [resource]
 script = ExtResource("1")
 speaker = "Mother at the Wayside Shrine"
-body = "My boy went to the war with a prayer bell on his belt, so I would hear him coming home. I never did. Forgive an old woman — for a breath, in this green light, you had his look. The ones who don't come back all have it. You found it, didn't you. His bell. I can see it in your hand."
+body = "My boy went to war with a prayer bell on his belt, so I would hear him coming home. I never did. Forgive me — for a moment, you had his look. The ones who don't come back all have it. You found his bell, didn't you. I can see it in your hand."
 variants = [SubResource("variant_gentle")]
 choices = [SubResource("choice_stay"), SubResource("choice_go")]

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "Trail Cairn"
-body = "A cairn of stacked stones, half-drowned in a drift — a marker, left by pilgrims who climbed here when the world was younger and the war was still unthinkable. It points the way on: more snow, more wind, more up. Someone once believed this road led somewhere worth the climbing. Up here, with the cold in your bones and the peak still above you, you find you have to believe it too."
+body = "A cairn of stacked stones, half-drowned in a drift — left by pilgrims who climbed here long before the war. It points the way on: more snow, more wind, more up. Someone once believed this road led somewhere worth the climb. Up here, you find you have to believe it too."
 variants = []
 choices = []

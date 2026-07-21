@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "Among the Reeds"
-body = "A small bronze prayer bell, green with age, snagged low in the reeds. You lift it and it rings once — clear, and unbearably sad. Somewhere close, a grieving voice would know that sound anywhere."
+body = "A small bronze prayer bell, green with age, tangled in the reeds. You lift it and it rings once — clear, and sad. Somewhere close, someone would know that sound anywhere."
 variants = []
 choices = []

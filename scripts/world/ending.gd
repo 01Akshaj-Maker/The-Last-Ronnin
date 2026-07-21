@@ -27,7 +27,8 @@ const APPROACH_COLOR: Color = Color(0.05, 0.05, 0.06, 1)
 @onready var _particles: CPUParticles2D = $Particles
 @onready var _title_label: Label = $Center/VBox/Title
 @onready var _epitaph_label: Label = $Center/VBox/Epitaph
-@onready var _caption_label: Label = $Center/VBox/Caption
+@onready var _stats_title_label: Label = $Center/VBox/StatsTitle
+@onready var _stats_label: Label = $Center/VBox/Stats
 @onready var _hint_label: Label = $Center/VBox/Hint
 @onready var _reveal_label: Label = $Reveal
 
@@ -41,12 +42,14 @@ func _ready() -> void:
 	_particles.emitting = false
 	_title_label.modulate.a = 0.0
 	_epitaph_label.modulate.a = 0.0
-	_caption_label.modulate.a = 0.0
+	_stats_title_label.modulate.a = 0.0
+	_stats_label.modulate.a = 0.0
 	_hint_label.modulate.a = 0.0
 	_reveal_label.modulate.a = 0.0
 	# Assemble the epitaph now (from the counters), but keep it hidden until the reveal ends.
 	if epitaph != null:
 		_epitaph_label.text = epitaph.assemble()
+	_stats_label.text = _stats_summary()
 	_play_reveal()
 
 
@@ -81,9 +84,26 @@ func _bloom() -> void:
 	tween.set_parallel(true)
 	tween.tween_property(_title_label, "modulate:a", 1.0, BLOOM_TIME)
 	tween.tween_property(_epitaph_label, "modulate:a", 1.0, BLOOM_TIME)
-	tween.tween_property(_caption_label, "modulate:a", 1.0, BLOOM_TIME)
 	await tween.finished
+	# The final tally of who he became fades in after the epitaph has settled (§3 counters,
+	# now shown as a closing measure of the road).
+	var ledger: Tween = create_tween()
+	ledger.set_parallel(true)
+	ledger.tween_property(_stats_title_label, "modulate:a", 1.0, 1.1)
+	ledger.tween_property(_stats_label, "modulate:a", 1.0, 1.1)
+	await ledger.finished
 	_arm_replay()
+
+
+## The four identity counters (Bible §3), shown at the very end as a plain tally of the life
+## just lived. Presentation only — the values were accumulated by the choices along the road.
+func _stats_summary() -> String:
+	return "Honor  %d        Mercy  %d        Attachment  %d        Selflessness  %d" % [
+		Identity.get_value("Honor"),
+		Identity.get_value("Mercy"),
+		Identity.get_value("Attachment"),
+		Identity.get_value("Selflessness"),
+	]
 
 
 ## Warmth of the life just lived. Mercy and selflessness read warm; attachment (clinging,
@@ -96,7 +116,8 @@ func _warmth() -> int:
 func _apply_mood(mood: MoodData) -> void:
 	if mood == null:
 		return
-	_caption_label.text = mood.caption
+	# The mood's own caption text is intentionally not shown — the warm/cold light and the
+	# drifting blossoms/snow carry it, and the final tally speaks plainly instead.
 	_configure_particles(mood)
 	# Bloom the light in rather than snapping it on — the mood arriving with the epitaph.
 	var tween: Tween = create_tween()

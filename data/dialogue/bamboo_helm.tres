@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "Rusted Helm"
-body = "A soldier's helm, half-swallowed by moss, a dent in the crown where the blow came down. No bones beneath it — the bamboo has taken everything softer, and kept the iron. This quiet forest has been a battlefield before. It hides its dead well."
+body = "A soldier's helm, half-swallowed by moss, dented where the blow came down. No bones beneath it. This quiet forest was a battlefield once — it hides its dead well."
 variants = []
 choices = []

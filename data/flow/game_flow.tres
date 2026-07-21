@@ -6,17 +6,17 @@
 [sub_resource type="Resource" id="ch_village"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/Main.tscn"
-travel_text = "He walked on, and the rain thinned to mist. The road narrowed, the grey fields gave way to green — and the bamboo closed over him like water."
+travel_text = "He walked on, and the rain thinned to mist. The grey fields gave way to green, and the bamboo closed over him like water."
 
 [sub_resource type="Resource" id="ch_bamboo"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/BambooForest.tscn"
-travel_text = "The bamboo fell away behind him, and the air went thin and white. The land tilted upward — stone, and then snow — toward the last cold shoulder of the mountains, where the world runs out of green and nearly out of sound."
+travel_text = "The bamboo fell away behind him, and the air went thin and white. The land tilted upward — stone, then snow — toward the last cold shoulder of the mountains, where the world runs nearly out of sound."
 
 [sub_resource type="Resource" id="ch_snow"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/SnowMountain.tscn"
-travel_text = "He crested the pass and started down its far side, into a great and final quiet. The wind let go of him. The road ran on, level and grey, toward the place the message had named — and he knew, now, that he was nearly there."
+travel_text = "He crested the pass and started down the far side, into a great and final quiet. The wind let go of him. The road ran level and grey toward the place the message had named — and he knew, now, that he was nearly there."
 
 [resource]
 script = ExtResource("1")

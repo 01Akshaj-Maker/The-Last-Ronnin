@@ -20,6 +20,6 @@ advance_on = ""
 
 [resource]
 script = ExtResource("1")
-onboarding = PackedStringArray("Higher than the birds now. Higher than the war ever reached. The cold at this height should be unbearable — should be. It is only quiet.", "One more climb, samurai. One more, and the long road runs out at last.")
+onboarding = PackedStringArray("Higher than the birds now. Higher than the war ever reached. The cold up here should be unbearable. It is only quiet.", "One more climb, samurai. One more, and the long road runs out at last.")
 controls_hint = ""
 objectives = [SubResource("obj_climb"), SubResource("obj_rival"), SubResource("obj_leave")]

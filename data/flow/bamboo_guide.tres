@@ -5,12 +5,12 @@
 
 [sub_resource type="Resource" id="obj_find"]
 script = ExtResource("2")
-text = "Search the bamboo for whatever rings among the reeds."
+text = "Find what's ringing among the reeds."
 advance_on = "found_bell"
 
 [sub_resource type="Resource" id="obj_bring"]
 script = ExtResource("2")
-text = "Bring the bell to the woman at the wayside shrine."
+text = "Bring the bell to the woman at the shrine."
 advance_on = "talked_mother"
 
 [sub_resource type="Resource" id="obj_leave"]
@@ -20,6 +20,6 @@ advance_on = ""
 
 [resource]
 script = ExtResource("1")
-onboarding = PackedStringArray("The rain is behind you now. Only bamboo, and the green hush between the stalks.", "A small sound threads the green quiet — a bell, ringing somewhere among the stalks. Something here is lost, and it is still calling.")
+onboarding = PackedStringArray("The rain is behind you now. Only bamboo, and green quiet.", "A bell is ringing somewhere in the green. Something here is lost.")
 controls_hint = ""
 objectives = [SubResource("obj_find"), SubResource("obj_bring"), SubResource("obj_leave")]
