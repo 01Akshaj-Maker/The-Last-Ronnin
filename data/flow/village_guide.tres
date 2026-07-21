@@ -3,18 +3,19 @@
 [ext_resource type="Script" path="res://scripts/systems/chapter_guide_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/objective_step.gd" id="2"]
 
-[sub_resource type="Resource" id="obj_talk"]
+[sub_resource type="Resource" id="obj_gather"]
 script = ExtResource("2")
-text = "Speak with those who still linger here."
-advance_on = "talked"
+text = "Hear the village out before you move on. Speak with its people — and find the old monk to the west."
+advance_on = ""
+requires = PackedStringArray("talked_widow", "talked_thief", "talked_child", "talked_monk")
 
 [sub_resource type="Resource" id="obj_leave"]
 script = ExtResource("2")
-text = "When you are ready, leave by the road north."
+text = "Carry the message onward. Leave by the road north, out of the valley."
 advance_on = ""
 
 [resource]
 script = ExtResource("1")
-onboarding = PackedStringArray("Another village the war has hollowed out. Strange — my feet knew the road here, though I have never walked it.", "Someone among them may know what message I carry. And why.")
+onboarding = PackedStringArray("Another village emptied by the war. Strange — I have never walked here, yet my feet knew the way.", "I carry a message I cannot open. Someone here may know what it says — and why it was given to me.")
 controls_hint = "move — WASD / arrows           speak — E"
-objectives = [SubResource("obj_talk"), SubResource("obj_leave")]
+objectives = [SubResource("obj_gather"), SubResource("obj_leave")]

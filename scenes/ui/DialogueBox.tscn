@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/dialogue_box.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="box"]
+content_margin_left = 24.0
+content_margin_top = 18.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+bg_color = Color(0.05, 0.05, 0.07, 0.92)
+border_width_top = 2
+border_color = Color(0.86, 0.73, 0.48, 0.45)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="DialogueUI" type="CanvasLayer"]
 script = ExtResource("1")
@@ -12,70 +25,69 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="Root"]
+[node name="Box" type="PanelContainer" parent="Root"]
 layout_mode = 1
+anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 28.0
-offset_top = -196.0
 offset_right = -28.0
 offset_bottom = -28.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("box")
 
-[node name="Margin" type="MarginContainer" parent="Root/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 14
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 14
-
-[node name="VBox" type="VBoxContainer" parent="Root/Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Root/Box"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 9
 
-[node name="Speaker" type="Label" parent="Root/Panel/Margin/VBox"]
+[node name="Speaker" type="Label" parent="Root/Box/VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.78, 0.52, 1)
+theme_override_font_sizes/font_size = 24
 text = "Speaker"
 
-[node name="Body" type="Label" parent="Root/Panel/Margin/VBox"]
+[node name="Body" type="Label" parent="Root/Box/VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.92, 0.89, 1)
+theme_override_font_sizes/font_size = 20
 autowrap_mode = 3
 text = "Body text"
 
-[node name="Choices" type="VBoxContainer" parent="Root/Panel/Margin/VBox"]
+[node name="Choices" type="VBoxContainer" parent="Root/Box/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Choice0" type="Panel" parent="Root/Panel/Margin/VBox/Choices"]
-custom_minimum_size = Vector2(0, 30)
+[node name="Choice0" type="Panel" parent="Root/Box/VBox/Choices"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Root/Panel/Margin/VBox/Choices/Choice0"]
+[node name="Label" type="Label" parent="Root/Box/VBox/Choices/Choice0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
+offset_left = 14.0
+theme_override_font_sizes/font_size = 19
 vertical_alignment = 1
 text = "Choice A"
 
-[node name="Choice1" type="Panel" parent="Root/Panel/Margin/VBox/Choices"]
-custom_minimum_size = Vector2(0, 30)
+[node name="Choice1" type="Panel" parent="Root/Box/VBox/Choices"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Root/Panel/Margin/VBox/Choices/Choice1"]
+[node name="Label" type="Label" parent="Root/Box/VBox/Choices/Choice1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
+offset_left = 14.0
+theme_override_font_sizes/font_size = 19
 vertical_alignment = 1
 text = "Choice B"
 
-[node name="Hint" type="Label" parent="Root/Panel/Margin/VBox"]
+[node name="Hint" type="Label" parent="Root/Box/VBox"]
 layout_mode = 2
-modulate = Color(0.7, 0.7, 0.72, 1)
+modulate = Color(0.62, 0.62, 0.66, 1)
+theme_override_font_sizes/font_size = 15
 text = "Up / Down to choose      Enter to confirm"

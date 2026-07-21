@@ -26,6 +26,9 @@ signal interacted(dialogue: DialogueData)
 @export var sprite_offset: Vector2 = Vector2(0, -7)
 ## Face left instead of the sheet's default (right).
 @export var sprite_flip_h: bool = false
+## Per-instance tint over the shared sheet — lets one animation read as a distinct character
+## (e.g. a pale, aged monk). White leaves the art untouched.
+@export var sprite_modulate: Color = Color(1, 1, 1, 1)
 ## Solid collision footprint (world px). Sized near the visible body so the player bumps the
 ## sprite instead of overlapping it.
 @export var body_size: Vector2 = Vector2(42, 56)
@@ -52,6 +55,7 @@ func _apply_appearance() -> void:
 	_sprite.scale = sprite_scale
 	_sprite.offset = sprite_offset
 	_sprite.flip_h = sprite_flip_h
+	_sprite.modulate = sprite_modulate
 	if _sprite.sprite_frames != null and _sprite.sprite_frames.has_animation(npc_animation):
 		_sprite.play(npc_animation)
 	else:

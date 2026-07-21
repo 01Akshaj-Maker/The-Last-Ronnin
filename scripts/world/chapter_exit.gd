@@ -9,6 +9,11 @@ extends Area2D
 ## keep the scene's default label — set it when a chapter needs its own wording (e.g. a pass).
 @export var sign_text: String = ""
 
+## When true, the exit stays locked until the chapter's guide reports it is ready to leave
+## (all objectives finished) — walking in early just draws a quiet nudge instead of advancing.
+## Off by default so chapters that don't gate the road behave exactly as before (§9).
+@export var require_ready: bool = false
+
 @onready var _hint: Label = $Hint
 
 
@@ -19,8 +24,21 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player"):
-		# One-shot; don't fire again mid-transition. Must be deferred: Godot blocks changing
-		# monitoring directly inside a body_entered callback.
-		set_deferred("monitoring", false)
-		GameFlow.advance_chapter()
+	if not body.is_in_group("player"):
+		return
+	if require_ready and not _guide_ready():
+		var guide: Node = get_tree().get_first_node_in_group("chapter_guide")
+		if guide != null and guide.has_method("flash_notice"):
+			guide.flash_notice("Not yet. There are still voices here you have not heard.")
+		return
+	# One-shot; don't fire again mid-transition. Must be deferred: Godot blocks changing
+	# monitoring directly inside a body_entered callback.
+	set_deferred("monitoring", false)
+	GameFlow.advance_chapter()
+
+
+func _guide_ready() -> bool:
+	var guide: Node = get_tree().get_first_node_in_group("chapter_guide")
+	if guide == null or not guide.has_method("is_ready_to_leave"):
+		return true
+	return guide.is_ready_to_leave()

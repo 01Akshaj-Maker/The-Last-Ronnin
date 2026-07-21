@@ -21,5 +21,5 @@ effects = {
 [resource]
 script = ExtResource("1")
 speaker = "Child in the Rain"
-body = "Mister — why are you all wet, but the rain doesn't seem to land on you? Grandma says people like you are already halfway to somewhere else, and shouldn't be spoken to too long."
+body = "Mister… the rain is falling right through you. It isn't landing on you at all. Grandma says people like you are already partway to somewhere else, and I shouldn't talk to you for too long."
 choices = [SubResource("choice_a"), SubResource("choice_b")]

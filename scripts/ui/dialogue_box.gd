@@ -11,30 +11,35 @@ extends CanvasLayer
 signal choice_selected(index: int, choice: DialogueChoice)
 signal closed
 
-@onready var _speaker_label: Label = $Root/Panel/Margin/VBox/Speaker
-@onready var _body_label: Label = $Root/Panel/Margin/VBox/Body
+@onready var _speaker_label: Label = $Root/Box/VBox/Speaker
+@onready var _body_label: Label = $Root/Box/VBox/Body
 @onready var _choice_rows: Array[Control] = [
-	$Root/Panel/Margin/VBox/Choices/Choice0,
-	$Root/Panel/Margin/VBox/Choices/Choice1,
+	$Root/Box/VBox/Choices/Choice0,
+	$Root/Box/VBox/Choices/Choice1,
 ]
 @onready var _choice_labels: Array[Label] = [
-	$Root/Panel/Margin/VBox/Choices/Choice0/Label,
-	$Root/Panel/Margin/VBox/Choices/Choice1/Label,
+	$Root/Box/VBox/Choices/Choice0/Label,
+	$Root/Box/VBox/Choices/Choice1/Label,
 ]
-@onready var _hint_label: Label = $Root/Panel/Margin/VBox/Hint
+@onready var _hint_label: Label = $Root/Box/VBox/Hint
 
 const _COLOR_SELECTED: Color = Color(1, 1, 1, 1)
-const _COLOR_DIMMED: Color = Color(0.55, 0.55, 0.6, 1)
+const _COLOR_DIMMED: Color = Color(0.58, 0.58, 0.63, 1)
 
 var _data: DialogueData
 var _selected: int = 0
 var _is_open: bool = false
+# The raw choice text, so the selection marker can be re-prefixed without doubling up.
+var _choice_texts: Array[String] = ["", ""]
 # Ignore the interact key until it is released once, so the same press that opens the box
 # cannot immediately confirm a choice.
 var _armed: bool = false
+var _sb_selected: StyleBoxFlat
+var _sb_idle: StyleBoxFlat
 
 
 func _ready() -> void:
+	_build_choice_styles()
 	_close_immediately()
 
 
@@ -47,7 +52,7 @@ func open(data: DialogueData) -> void:
 		var has_choice: bool = i < data.choices.size()
 		_choice_rows[i].visible = has_choice
 		if has_choice:
-			_choice_labels[i].text = data.choices[i].text
+			_choice_texts[i] = data.choices[i].text
 	_hint_label.text = "Enter to continue" if data.choices.is_empty() else "Up / Down to choose      Enter to confirm"
 	_is_open = true
 	_armed = false
@@ -84,9 +89,24 @@ func _close_immediately() -> void:
 	visible = false
 
 
+func _build_choice_styles() -> void:
+	_sb_selected = StyleBoxFlat.new()
+	_sb_selected.bg_color = Color(0.86, 0.73, 0.48, 0.18)
+	_sb_selected.border_width_left = 3
+	_sb_selected.border_color = Color(0.9, 0.78, 0.52, 0.95)
+	_sb_selected.set_corner_radius_all(6)
+	_sb_selected.content_margin_left = 6.0
+	_sb_idle = StyleBoxFlat.new()
+	_sb_idle.bg_color = Color(1, 1, 1, 0.04)
+	_sb_idle.set_corner_radius_all(6)
+
+
 func _update_highlight() -> void:
 	for i in _choice_rows.size():
-		_choice_rows[i].modulate = _COLOR_SELECTED if i == _selected else _COLOR_DIMMED
+		var selected: bool = i == _selected
+		_choice_rows[i].add_theme_stylebox_override("panel", _sb_selected if selected else _sb_idle)
+		_choice_labels[i].modulate = _COLOR_SELECTED if selected else _COLOR_DIMMED
+		_choice_labels[i].text = ("▸   " + _choice_texts[i]) if selected else ("     " + _choice_texts[i])
 
 
 func _confirm() -> void:

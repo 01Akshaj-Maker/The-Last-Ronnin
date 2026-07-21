@@ -99,6 +99,7 @@ block_color = Color(0.36, 0.32, 0.28, 1)
 
 [node name="ChapterExit" parent="." instance=ExtResource("10")]
 position = Vector2(0, -582)
+require_ready = true
 
 [node name="Signpost" parent="." instance=ExtResource("12")]
 position = Vector2(-90, 415)
@@ -114,6 +115,7 @@ position = Vector2(0, 440)
 [node name="Widow" parent="Actors" instance=ExtResource("3")]
 position = Vector2(70, -210)
 dialogue = ExtResource("7")
+guide_event = "talked_widow"
 npc_animation = &"widow"
 sprite_scale = Vector2(3.2, 3.2)
 sprite_offset = Vector2(0, -7)
@@ -122,6 +124,7 @@ body_size = Vector2(40, 56)
 [node name="Thief" parent="Actors" instance=ExtResource("3")]
 position = Vector2(470, 160)
 dialogue = ExtResource("8")
+guide_event = "talked_thief"
 npc_animation = &"ronin"
 sprite_scale = Vector2(3.2, 3.2)
 sprite_offset = Vector2(0, -7)
@@ -131,18 +134,22 @@ body_size = Vector2(44, 56)
 [node name="Child" parent="Actors" instance=ExtResource("3")]
 position = Vector2(-300, 320)
 dialogue = ExtResource("9")
+guide_event = "talked_child"
 npc_animation = &"villager_young"
 sprite_scale = Vector2(2.4, 2.4)
 sprite_offset = Vector2(0, -8)
 body_size = Vector2(30, 42)
 
 [node name="Monk" parent="Actors" instance=ExtResource("3")]
-position = Vector2(150, -60)
+position = Vector2(-350, -10)
 dialogue = ExtResource("11")
-npc_animation = &"villager_old"
-sprite_scale = Vector2(3.2, 3.2)
-sprite_offset = Vector2(0, -7)
-body_size = Vector2(42, 56)
+prompt_verb = "speak"
+guide_event = "talked_monk"
+npc_animation = &"lord"
+sprite_scale = Vector2(3.7, 3.7)
+sprite_offset = Vector2(0, -9)
+sprite_modulate = Color(0.82, 0.85, 0.93, 1)
+body_size = Vector2(46, 62)
 
 [node name="ChapterGuide" parent="." instance=ExtResource("13")]
 data = ExtResource("14")

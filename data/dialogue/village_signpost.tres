@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "Weathered Signpost"
-body = "The characters have worn to ghosts — all but one. An arrow, pointing north: the road out of the valley, toward the mountains. Your feet already lean that way, though you cannot say why."
+body = "Most of the writing has worn away to nothing. Only one mark is left — an arrow, pointing north, to the road out of the valley and up toward the mountains. Somehow, your feet already want to follow it."
 variants = []
 choices = []

@@ -23,5 +23,5 @@ effects = {
 [resource]
 script = ExtResource("1")
 speaker = "Wandering Monk"
-body = "You carry a message you cannot read, samurai — bound for a place you have never walked, yet your feet already know the road. When this journey ends, what would you have it say of you?"
+body = "You carry a message you cannot read, samurai — to a place you have never been, yet your feet already know the way. When the road finally ends, what would you have it say of the man who walked it?"
 choices = [SubResource("choice_a"), SubResource("choice_b")]
