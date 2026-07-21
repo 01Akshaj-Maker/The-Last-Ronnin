@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ChapterGuideData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/chapter_guide_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+onboarding = PackedStringArray("The snow thins into fog. The wind is gone. There is no sound at all — not even your own steps.", "You do not feel the cold. You have not, this whole long climb. Somewhere on the road, you stopped needing to.", "This is the place the message named. The end of the road. You are almost there now.")
+controls_hint = ""
+objectives = []

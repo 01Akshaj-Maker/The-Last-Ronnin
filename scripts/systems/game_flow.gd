@@ -108,8 +108,12 @@ func _build_overlay() -> void:
 	_card = Label.new()
 	_card.anchor_right = 1.0
 	_card.anchor_bottom = 1.0
+	# Inset from the screen edges and wrap, so a long card no longer runs off the side.
+	_card.offset_left = 150.0
+	_card.offset_right = -150.0
 	_card.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_card.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_card.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_card.modulate = Color(1, 1, 1, 0)
 	_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(_card)

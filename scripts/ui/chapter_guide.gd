@@ -12,6 +12,10 @@ extends CanvasLayer
 ## a chapter still has a goal to finish, `is_ready_to_leave()` is false, which a chapter exit
 ## can honour to keep the player from leaving before the place has been heard out.
 
+## Emitted once the opening thoughts have all played out. The final approach waits on this so
+## its walk-into-the-dark only begins after the samurai's last thought has been heard.
+signal onboarding_finished
+
 @export var data: ChapterGuideData
 
 const OBJECTIVE_ALPHA: float = 0.96
@@ -154,3 +158,5 @@ func _play_onboarding() -> void:
 		var t_out: Tween = create_tween()
 		t_out.tween_property(_thought, "modulate:a", 0.0, 0.9)
 		await t_out.finished
+	if is_inside_tree():
+		onboarding_finished.emit()

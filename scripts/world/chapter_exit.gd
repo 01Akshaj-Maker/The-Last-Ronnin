@@ -15,6 +15,10 @@ extends Area2D
 ## chapters that don't gate the road behave exactly as before (§9).
 @export var require_ready: bool = false
 
+## Colour of the sealing gate — set it to the chapter's own wall colour so, while locked, the
+## gap simply reads as more wall. Only visible in a gated chapter.
+@export var gate_color: Color = Color(0.2, 0.2, 0.24, 1)
+
 @onready var _hint: Label = $Hint
 @onready var _gate_collision: CollisionShape2D = $Gate/Collision
 @onready var _gate_visual: ColorRect = $Gate/GateVisual
@@ -25,6 +29,7 @@ var _gate_open: bool = false
 func _ready() -> void:
 	if sign_text != "" and _hint != null:
 		_hint.text = sign_text
+	_gate_visual.color = gate_color
 	body_entered.connect(_on_body_entered)
 	# A gate always seals the gap so the player can never walk out into the void. An ungated
 	# chapter opens it at once (road's open); a gated one keeps it shut until it's ready.
