@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="GraveRecognition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/grave_recognition.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/recognition_line.gd" id="2"]
+
+[sub_resource type="Resource" id="l1"]
+script = ExtResource("2")
+monk = false
+text = "This name, cut deep into the stone... it is my own."
+
+[sub_resource type="Resource" id="l2"]
+script = ExtResource("2")
+monk = false
+text = "No — I only just arrived. I carried the message here. How can it be mine—"
+
+[sub_resource type="Resource" id="l3"]
+script = ExtResource("2")
+monk = true
+text = "Be still, samurai. You are here now. That is enough."
+
+[sub_resource type="Resource" id="l4"]
+script = ExtResource("2")
+monk = true
+text = "The message was always yours. This whole long road, you have been carrying it home."
+
+[sub_resource type="Resource" id="l5"]
+script = ExtResource("2")
+monk = true
+text = "You fell in the war — a long time ago. The rain that never touched you, the cold you never felt: you know why, now."
+
+[sub_resource type="Resource" id="l6"]
+script = ExtResource("2")
+monk = false
+text = "...I fell. Yes. I remember it now."
+
+[sub_resource type="Resource" id="l7"]
+script = ExtResource("2")
+monk = true
+text = "The road is walked. Set it down now, and rest."
+
+[resource]
+script = ExtResource("1")
+lines = [SubResource("l1"), SubResource("l2"), SubResource("l3"), SubResource("l4"), SubResource("l5"), SubResource("l6"), SubResource("l7")]
+line_fade = 1.2
+line_hold = 2.2
+settle = 1.8

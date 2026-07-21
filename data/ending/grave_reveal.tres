@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1")
-lines = PackedStringArray("The road ends here. No village. No temple. No one waiting.", "Only a grave in the tall grass, its stone worn soft with years.", "You kneel to read the name. Your hand goes still.", "It is your own.", "You fell in the war, samurai. Long ago. The rain that never touched you, the road your feet already knew — not riddles. Only the world, walking you home.")
+lines = PackedStringArray("The road ends here. No village. No temple. No one waiting.", "Only a grave in the tall grass, its stone worn soft with years.", "You kneel to read the name. Your hand goes still.", "It is your own.")
 line_fade = 1.4
 line_hold = 2.4
 settle = 1.8

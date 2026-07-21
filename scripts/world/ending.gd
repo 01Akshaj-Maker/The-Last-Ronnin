@@ -21,10 +21,13 @@ const APPROACH_COLOR: Color = Color(0.05, 0.05, 0.06, 1)
 @export var epitaph: EpitaphData
 @export var mood_set: MoodSet
 @export var reveal: GraveReveal
+@export var recognition: GraveRecognition
 
 @onready var _background: ColorRect = $Background
 @onready var _tint: ColorRect = $Tint
 @onready var _particles: CPUParticles2D = $Particles
+@onready var _ghost: AnimatedSprite2D = $Ghost
+@onready var _monk_voice: Label = $MonkVoice
 @onready var _title_label: Label = $Center/VBox/Title
 @onready var _epitaph_label: Label = $Center/VBox/Epitaph
 @onready var _stats_title_label: Label = $Center/VBox/StatsTitle
@@ -46,39 +49,112 @@ func _ready() -> void:
 	_stats_label.modulate.a = 0.0
 	_hint_label.modulate.a = 0.0
 	_reveal_label.modulate.a = 0.0
+	_monk_voice.modulate.a = 0.0
+	_ghost.modulate.a = 0.0
+	var view: Vector2 = get_viewport_rect().size
+	_ghost.position = Vector2(view.x * 0.5, view.y * 0.28)
 	# Assemble the epitaph now (from the counters), but keep it hidden until the reveal ends.
 	if epitaph != null:
 		_epitaph_label.text = epitaph.assemble()
 	_stats_label.text = _stats_summary()
-	_play_reveal()
+	_play_sequence()
+
+
+## Arrival reveal -> the grave-side recognition with the monk -> the counter-driven bloom.
+func _play_sequence() -> void:
+	await _play_reveal()
+	await _play_recognition()
+	if is_inside_tree():
+		_bloom()
 
 
 ## The slow, quiet reveal — one restrained line at a time over the dark approach (§4, §6). Pure
-## presentation: it shows GraveReveal.lines and never touches the counters.
+## presentation: it shows GraveReveal.lines and never touches the counters. Now ends on "It is
+## your own." — the meaning of it is spoken by the monk in the recognition that follows.
 func _play_reveal() -> void:
-	if reveal != null:
-		for line in reveal.lines:
-			if not is_inside_tree():
-				return
-			_reveal_label.text = line
-			var t_in: Tween = create_tween()
-			t_in.tween_property(_reveal_label, "modulate:a", 0.92, reveal.line_fade)
-			await t_in.finished
-			await get_tree().create_timer(ReadingTime.hold_for(line, reveal.line_hold)).timeout
-			if not is_inside_tree():
-				return
-			var t_out: Tween = create_tween()
-			t_out.tween_property(_reveal_label, "modulate:a", 0.0, reveal.line_fade)
-			await t_out.finished
-		await get_tree().create_timer(reveal.settle).timeout
+	if reveal == null:
+		return
+	for line in reveal.lines:
+		if not is_inside_tree():
+			return
+		_reveal_label.text = line
+		var t_in: Tween = create_tween()
+		t_in.tween_property(_reveal_label, "modulate:a", 0.9, reveal.line_fade)
+		await t_in.finished
+		await get_tree().create_timer(ReadingTime.hold_for(line, reveal.line_hold)).timeout
+		if not is_inside_tree():
+			return
+		var t_out: Tween = create_tween()
+		t_out.tween_property(_reveal_label, "modulate:a", 0.0, reveal.line_fade)
+		await t_out.finished
+	await get_tree().create_timer(reveal.settle).timeout
+
+
+## The recognition (Bible §4 twist, §6): his confusion at his own name, and the monk — returned
+## as a guide of the dead — telling him what has happened. Deliberately NOT the dialogue box:
+## two bare voices drift over the dark, his own confused and flickering, the monk's calm and
+## warm, with the monk a faint ghost fading out of the black. Difference, confusion, death.
+func _play_recognition() -> void:
+	if recognition == null:
+		return
+	var monk_present: bool = false
+	for line in recognition.lines:
+		if not is_inside_tree():
+			return
+		if line.monk and not monk_present:
+			monk_present = true
+			_fade_ghost(0.5)  # the guide steps quietly out of the dark
+		if line.monk:
+			await _speak_monk(line.text)
+		else:
+			await _speak_self(line.text)
 	if not is_inside_tree():
 		return
-	_bloom()
+	await get_tree().create_timer(recognition.settle).timeout
+
+
+## The monk's voice: calm, steady, warm, up near his faint figure.
+func _speak_monk(text: String) -> void:
+	_monk_voice.text = text
+	var t_in: Tween = create_tween()
+	t_in.tween_property(_monk_voice, "modulate:a", 0.95, recognition.line_fade)
+	await t_in.finished
+	await get_tree().create_timer(ReadingTime.hold_for(text, recognition.line_hold)).timeout
+	if not is_inside_tree():
+		return
+	var t_out: Tween = create_tween()
+	t_out.tween_property(_monk_voice, "modulate:a", 0.0, recognition.line_fade)
+	await t_out.finished
+
+
+## His own voice: cool and centred, but arriving unsteadily — the thought flickers as it forms,
+## the confusion of a man reading his own name off a gravestone.
+func _speak_self(text: String) -> void:
+	_reveal_label.text = text
+	var t_in: Tween = create_tween()
+	t_in.tween_property(_reveal_label, "modulate:a", 0.5, recognition.line_fade * 0.55)
+	t_in.tween_property(_reveal_label, "modulate:a", 0.85, 0.22)
+	t_in.tween_property(_reveal_label, "modulate:a", 0.55, 0.18)
+	t_in.tween_property(_reveal_label, "modulate:a", 0.82, 0.3)
+	await t_in.finished
+	await get_tree().create_timer(ReadingTime.hold_for(text, recognition.line_hold)).timeout
+	if not is_inside_tree():
+		return
+	var t_out: Tween = create_tween()
+	t_out.tween_property(_reveal_label, "modulate:a", 0.0, recognition.line_fade)
+	await t_out.finished
+
+
+func _fade_ghost(to_alpha: float) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(_ghost, "modulate:a", to_alpha, 1.6)
 
 
 ## After the reveal, the counter-driven payoff fades up: the mood (warm/cold) and the epitaph.
 ## The selection (warmth -> mood, epitaph.assemble) already happened; here we only reveal it.
 func _bloom() -> void:
+	# The monk dissolves back into the dark as the grave blooms — his words become the stone.
+	_fade_ghost(0.0)
 	_apply_mood(mood_set.pick(_warmth()) if mood_set != null else null)
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
