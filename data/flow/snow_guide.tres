@@ -5,8 +5,8 @@
 
 [sub_resource type="Resource" id="obj_climb"]
 script = ExtResource("2")
-text = "Climb the pass — find the old shrine above the storm."
-advance_on = "reached_warden"
+text = "Climb toward the shrine — and stop to look back at the slope you climbed."
+requires = PackedStringArray("saw_no_tracks", "reached_warden")
 
 [sub_resource type="Resource" id="obj_rival"]
 script = ExtResource("2")

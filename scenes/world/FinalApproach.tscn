@@ -7,7 +7,7 @@
 [ext_resource type="Resource" path="res://data/flow/final_approach_guide.tres" id="5"]
 
 [sub_resource type="RectangleShape2D" id="trigger_shape"]
-size = Vector2(640, 90)
+size = Vector2(640, 160)
 
 [node name="FinalApproach" type="Node2D"]
 script = ExtResource("1")
@@ -41,22 +41,31 @@ position = Vector2(0, 640)
 block_size = Vector2(800, 40)
 block_color = Color(0.29, 0.3, 0.32, 1)
 
-[node name="Grave" parent="Environment" instance=ExtResource("3")]
-position = Vector2(0, -520)
-block_size = Vector2(56, 78)
-block_color = Color(0.5, 0.5, 0.52, 1)
+[node name="GraveBase" parent="Environment" instance=ExtResource("3")]
+position = Vector2(0, -472)
+block_size = Vector2(120, 26)
+block_color = Color(0.44, 0.45, 0.48, 1)
+
+[node name="GraveStone" parent="Environment" instance=ExtResource("3")]
+position = Vector2(0, -524)
+block_size = Vector2(58, 92)
+block_color = Color(0.63, 0.64, 0.67, 1)
+
+[node name="GraveCap" parent="Environment" instance=ExtResource("3")]
+position = Vector2(0, -576)
+block_size = Vector2(82, 22)
+block_color = Color(0.67, 0.68, 0.71, 1)
 
 [node name="Actors" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="Actors" instance=ExtResource("2")]
-position = Vector2(0, 500)
-speed = 55.0
+position = Vector2(0, 320)
 
-[node name="EndTrigger" type="Area2D" parent="."]
+[node name="GraveZone" type="Area2D" parent="."]
 position = Vector2(0, -430)
 
-[node name="Shape" type="CollisionShape2D" parent="EndTrigger"]
+[node name="Shape" type="CollisionShape2D" parent="GraveZone"]
 shape = SubResource("trigger_shape")
 
 [node name="ChapterGuide" parent="." instance=ExtResource("4")]
@@ -70,3 +79,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.05, 0.05, 0.06, 0)
+
+[node name="PromptLayer" type="CanvasLayer" parent="."]
+layer = 60
+
+[node name="GravePrompt" type="Label" parent="PromptLayer"]
+anchor_left = 0.0
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.86
+horizontal_alignment = 1
+vertical_alignment = 1
+modulate = Color(0.86, 0.84, 0.76, 1)
+theme_override_font_sizes/font_size = 20
+text = "E   —   read the grave"
+visible = false

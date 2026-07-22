@@ -21,14 +21,30 @@ func assemble() -> String:
 	if opening != "":
 		parts.append(opening)
 
-	var matched: PackedStringArray = PackedStringArray()
-	for line in lines:
-		if line != null and line.is_active():
-			matched.append(line.text)
-	if matched.is_empty() and fallback != "":
-		matched.append(fallback)
-	parts.append_array(matched)
+	# One composed line, not a virtue-list: the single sharpest thing the counters have to say —
+	# the active fragment on the axis the player pushed hardest (§3, §6 "felt, not stated").
+	var middle: String = _dominant_line()
+	if middle == "" and fallback != "":
+		middle = fallback
+	if middle != "":
+		parts.append(middle)
 
 	if closing != "":
 		parts.append(closing)
 	return "\n".join(parts)
+
+
+## Among the fragments whose condition holds, the one on the strongest-pushed axis (greatest
+## counter magnitude). Ties resolve to the earliest in `lines`, so authoring order is the
+## tiebreak. Returns "" when nothing is active, so the caller can fall back.
+func _dominant_line() -> String:
+	var best_text: String = ""
+	var best_magnitude: int = -1
+	for line in lines:
+		if line == null or not line.is_active():
+			continue
+		var magnitude: int = abs(Identity.get_value(line.axis))
+		if magnitude > best_magnitude:
+			best_magnitude = magnitude
+			best_text = line.text
+	return best_text
