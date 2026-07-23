@@ -19,17 +19,32 @@ extends Area2D
 ## gap simply reads as more wall. Only visible in a gated chapter.
 @export var gate_color: Color = Color(0.2, 0.2, 0.24, 1)
 
+## Optional real art for the sealing gate (e.g. a wooden gate). When set, the gate shows this
+## sprite instead of the plain colour block, and the dark road patch under it is hidden (the
+## chapter's own ground tiles show the road).
+@export var gate_texture: Texture2D
+
 @onready var _hint: Label = $Hint
+@onready var _path: ColorRect = $Path
 @onready var _gate_collision: CollisionShape2D = $Gate/Collision
 @onready var _gate_visual: ColorRect = $Gate/GateVisual
+@onready var _gate_sprite: Sprite2D = $Gate/GateSprite
 
 var _gate_open: bool = false
+# The node used as the gate's visible barrier (sprite when art is set, else the colour block).
+@onready var _visual: CanvasItem = _gate_visual
 
 
 func _ready() -> void:
 	if sign_text != "" and _hint != null:
 		_hint.text = sign_text
 	_gate_visual.color = gate_color
+	if gate_texture != null:
+		_gate_sprite.texture = gate_texture
+		_gate_sprite.visible = true
+		_gate_visual.visible = false
+		_path.visible = false
+		_visual = _gate_sprite
 	body_entered.connect(_on_body_entered)
 	# A gate always seals the gap so the player can never walk out into the void. An ungated
 	# chapter opens it at once (road's open); a gated one keeps it shut until it's ready.
@@ -72,18 +87,18 @@ func _open_gate(instant: bool) -> void:
 	_gate_open = true
 	_gate_collision.set_deferred("disabled", true)
 	if instant:
-		_gate_visual.visible = false
+		_visual.visible = false
 		return
 	var tween: Tween = create_tween()
-	tween.tween_property(_gate_visual, "modulate:a", 0.0, 0.7)
-	tween.tween_callback(func() -> void: _gate_visual.visible = false)
+	tween.tween_property(_visual, "modulate:a", 0.0, 0.7)
+	tween.tween_callback(func() -> void: _visual.visible = false)
 
 
 func _close_gate() -> void:
 	_gate_open = false
 	_gate_collision.set_deferred("disabled", false)
-	_gate_visual.visible = true
-	_gate_visual.modulate.a = 1.0
+	_visual.visible = true
+	_visual.modulate.a = 1.0
 
 
 func _guide_ready() -> bool:

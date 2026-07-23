@@ -19,6 +19,8 @@ const CLOSE_TIME: float = 4.0
 @onready var _grave_zone: Area2D = $GraveZone
 @onready var _overlay: ColorRect = $FadeLayer/Overlay
 @onready var _prompt: Label = $PromptLayer/GravePrompt
+@onready var _sign: StaticBody2D = $Actors/Signpost
+@onready var _dialogue_box: CanvasLayer = $DialogueUI
 
 var _at_grave: bool = false
 var _ending: bool = false
@@ -29,6 +31,11 @@ func _ready() -> void:
 	_prompt.visible = false
 	_grave_zone.body_entered.connect(_on_body_entered)
 	_grave_zone.body_exited.connect(_on_body_exited)
+	# The wayside sign reads exactly like the village's — an examinable that opens the ordinary
+	# dialogue box with the message he leaves behind. Muted while the box is up so the same press
+	# that dismisses the message cannot immediately re-open it.
+	_sign.interacted.connect(_on_sign_read)
+	_dialogue_box.closed.connect(_on_sign_closed)
 
 
 ## The prompt to read the stone appears only once he has reached the grave — until then there is
@@ -46,10 +53,22 @@ func _on_body_exited(body: Node) -> void:
 		_prompt.visible = false
 
 
+func _on_sign_read(dialogue: DialogueData) -> void:
+	_sign.set_enabled(false)
+	_dialogue_box.open(dialogue)
+
+
+func _on_sign_closed() -> void:
+	if not _ending:
+		_sign.set_enabled(true)
+
+
 ## He reads the grave when the player chooses to — a deliberate press, not a trip-wire — and only
-## that begins the end.
+## that begins the end. Reading the sign, by contrast, just opens the message and closes again.
 func _process(_delta: float) -> void:
-	if _at_grave and not _ending and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept")):
+	if _ending or _dialogue_box.visible:
+		return
+	if _at_grave and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept")):
 		_close()
 
 

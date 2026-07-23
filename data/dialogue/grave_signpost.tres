@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "A message, cut into the post"
+body = "I walked until the world fell silent,
+carrying one forgotten name.
+At the last hill, I found it etched in stone.
+I left the message there,
+and the wind remembered me.
+
+Only one who truly knows will understand these words."
+variants = []
+choices = []

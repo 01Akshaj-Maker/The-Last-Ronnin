@@ -7,7 +7,7 @@ extends CharacterBody2D
 ## The pack has no walk sheet, so movement uses the "run" animation. attack/hurt exist in the
 ## SpriteFrames for the later combat step; play_attack()/play_hurt() are ready hooks.
 
-@export var speed: float = 180.0
+@export var speed: float = 150.0
 
 var _can_move: bool = true
 

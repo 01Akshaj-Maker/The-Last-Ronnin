@@ -10,7 +10,7 @@ extends RefCounted
 ## feel exactly as they did before and only longer ones gain time.
 
 ## Extra seconds of reading time per character of text.
-const PER_CHARACTER: float = 0.045
+const PER_CHARACTER: float = 0.034
 ## Ceiling, so an unusually long passage lingers well without dragging forever.
 const MAXIMUM: float = 9.0
 

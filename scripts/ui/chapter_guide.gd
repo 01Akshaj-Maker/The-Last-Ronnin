@@ -19,11 +19,11 @@ signal onboarding_finished
 @export var data: ChapterGuideData
 
 const OBJECTIVE_ALPHA: float = 0.96
-const CONTROLS_ALPHA: float = 0.4
+const CONTROLS_ALPHA: float = 0.8
 const THOUGHT_ALPHA: float = 0.85
 const NOTICE_ALPHA: float = 0.92
-const THOUGHT_HOLD: float = 2.6
-const NOTICE_HOLD: float = 2.2
+const THOUGHT_HOLD: float = 2.0
+const NOTICE_HOLD: float = 1.8
 
 @onready var _pill: Control = $ObjectiveCenter/ObjectivePill
 @onready var _objective: Label = $ObjectiveCenter/ObjectivePill/ObjectiveText
@@ -150,13 +150,13 @@ func _play_onboarding() -> void:
 			return
 		_thought.text = line
 		var t_in: Tween = create_tween()
-		t_in.tween_property(_thought, "modulate:a", THOUGHT_ALPHA, 0.9)
+		t_in.tween_property(_thought, "modulate:a", THOUGHT_ALPHA, 0.65)
 		await t_in.finished
 		await get_tree().create_timer(ReadingTime.hold_for(line, THOUGHT_HOLD)).timeout
 		if not is_inside_tree():
 			return
 		var t_out: Tween = create_tween()
-		t_out.tween_property(_thought, "modulate:a", 0.0, 0.9)
+		t_out.tween_property(_thought, "modulate:a", 0.0, 0.65)
 		await t_out.finished
 	if is_inside_tree():
 		onboarding_finished.emit()

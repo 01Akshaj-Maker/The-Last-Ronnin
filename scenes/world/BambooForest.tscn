@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=44 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
@@ -14,134 +14,431 @@
 [ext_resource type="Resource" path="res://data/dialogue/bamboo_bell.tres" id="12"]
 [ext_resource type="Resource" path="res://data/dialogue/bamboo_shrine.tres" id="13"]
 [ext_resource type="Resource" path="res://data/dialogue/bamboo_helm.tres" id="14"]
+[ext_resource type="Script" path="res://scripts/world/bamboo_ground.gd" id="15"]
+[ext_resource type="TileSet" path="res://assets/environment/fm/fm_tileset.tres" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/env/EnvProp.tscn" id="17"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/clump_a.png" id="20"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/clump_b.png" id="21"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/clump_c.png" id="22"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/clump_d.png" id="23"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/torii.png" id="24"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/lantern2.png" id="25"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/jizo.png" id="26"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/grave2.png" id="27"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/fern.png" id="28"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/reeds.png" id="29"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/kabuto.png" id="30"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/bell.png" id="31"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/stalk_single.png" id="32"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/tree_willow.png" id="40"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/tree_pine.png" id="41"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/tree_big1.png" id="42"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/tree_med.png" id="43"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/tree_birch.png" id="44"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/bush_green.png" id="45"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/bush_sm.png" id="46"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/rock1.png" id="47"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/rock2.png" id="48"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/rock_sm.png" id="49"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/stump1.png" id="50"]
+[ext_resource type="Texture2D" path="res://assets/environment/fm/props/log.png" id="51"]
 
 [node name="BambooForest" type="Node2D"]
 script = ExtResource("1")
 
 [node name="Ground" type="ColorRect" parent="."]
-offset_left = -800.0
-offset_top = -600.0
-offset_right = 800.0
-offset_bottom = 600.0
-color = Color(0.08, 0.13, 0.1, 1)
+offset_left = -1400.0
+offset_top = -1100.0
+offset_right = 1400.0
+offset_bottom = 1100.0
+color = Color(0.07, 0.11, 0.08, 1)
+
+[node name="BambooTiles" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+script = ExtResource("15")
+
+[node name="GroundTiles" type="TileMapLayer" parent="BambooTiles"]
+texture_filter = 1
+modulate = Color(0.87, 0.97, 0.85, 1)
+tile_set = ExtResource("16")
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="WallTopLeft" parent="Environment" instance=ExtResource("5")]
 position = Vector2(-455, -600)
 block_size = Vector2(690, 40)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallTopRight" parent="Environment" instance=ExtResource("5")]
 position = Vector2(455, -600)
 block_size = Vector2(690, 40)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallLeft" parent="Environment" instance=ExtResource("5")]
 position = Vector2(-800, 0)
 block_size = Vector2(40, 1200)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallRight" parent="Environment" instance=ExtResource("5")]
 position = Vector2(800, 0)
 block_size = Vector2(40, 1200)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallBottomLeft" parent="Environment" instance=ExtResource("5")]
 position = Vector2(-450, 600)
 block_size = Vector2(700, 40)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallBottomRight" parent="Environment" instance=ExtResource("5")]
 position = Vector2(450, 600)
 block_size = Vector2(700, 40)
-block_color = Color(0.1, 0.16, 0.12, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="WallBottomMid" parent="Environment" instance=ExtResource("5")]
 position = Vector2(0, 600)
 block_size = Vector2(220, 40)
-block_color = Color(0.1, 0.16, 0.12, 1)
-
-[node name="Bamboo1" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-250, -150)
-block_size = Vector2(18, 150)
-block_color = Color(0.22, 0.44, 0.26, 1)
-
-[node name="Bamboo2" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-450, -250)
-block_size = Vector2(18, 130)
-block_color = Color(0.2, 0.4, 0.24, 1)
-
-[node name="Bamboo3" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-560, -50)
-block_size = Vector2(18, 160)
-block_color = Color(0.24, 0.46, 0.28, 1)
-
-[node name="Bamboo4" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-300, 200)
-block_size = Vector2(18, 140)
-block_color = Color(0.2, 0.4, 0.24, 1)
-
-[node name="Bamboo5" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-560, 250)
-block_size = Vector2(18, 150)
-block_color = Color(0.22, 0.44, 0.26, 1)
-
-[node name="Bamboo6" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-200, -360)
-block_size = Vector2(18, 130)
-block_color = Color(0.24, 0.46, 0.28, 1)
-
-[node name="Bamboo7" parent="Environment" instance=ExtResource("5")]
-position = Vector2(-630, 90)
-block_size = Vector2(18, 150)
-block_color = Color(0.2, 0.4, 0.24, 1)
-
-[node name="Bamboo8" parent="Environment" instance=ExtResource("5")]
-position = Vector2(300, -350)
-block_size = Vector2(18, 150)
-block_color = Color(0.22, 0.44, 0.26, 1)
-
-[node name="Bamboo9" parent="Environment" instance=ExtResource("5")]
-position = Vector2(520, -250)
-block_size = Vector2(18, 130)
-block_color = Color(0.24, 0.46, 0.28, 1)
-
-[node name="Bamboo10" parent="Environment" instance=ExtResource("5")]
-position = Vector2(630, -60)
-block_size = Vector2(18, 160)
-block_color = Color(0.2, 0.4, 0.24, 1)
-
-[node name="Bamboo11" parent="Environment" instance=ExtResource("5")]
-position = Vector2(560, 190)
-block_size = Vector2(18, 150)
-block_color = Color(0.22, 0.44, 0.26, 1)
-
-[node name="Bamboo12" parent="Environment" instance=ExtResource("5")]
-position = Vector2(300, 130)
-block_size = Vector2(18, 140)
-block_color = Color(0.24, 0.46, 0.28, 1)
-
-[node name="Bamboo13" parent="Environment" instance=ExtResource("5")]
-position = Vector2(470, 320)
-block_size = Vector2(18, 150)
-block_color = Color(0.2, 0.4, 0.24, 1)
-
-[node name="Bamboo14" parent="Environment" instance=ExtResource("5")]
-position = Vector2(650, 260)
-block_size = Vector2(18, 130)
-block_color = Color(0.22, 0.44, 0.26, 1)
+block_color = Color(0, 0, 0, 0)
 
 [node name="ShrineStone" parent="Environment" instance=ExtResource("5")]
-position = Vector2(250, -330)
-block_size = Vector2(80, 90)
-block_color = Color(0.28, 0.31, 0.28, 1)
+position = Vector2(250, -320)
+block_size = Vector2(96, 70)
+block_color = Color(0, 0, 0, 0)
 
 [node name="ChapterExit" parent="." instance=ExtResource("6")]
 position = Vector2(0, -582)
+sign_text = "the trail north — deeper into the hills"
+
+[node name="Path" parent="ChapterExit" index="0"]
+color = Color(0.26, 0.23, 0.19, 0)
+
+[node name="Hint" parent="ChapterExit" index="3"]
+offset_top = -78.0
+offset_bottom = -46.0
 
 [node name="Actors" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="BackWillowL" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-730, -240)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("40")
+
+[node name="BackPineR" parent="Actors" instance=ExtResource("17")]
+position = Vector2(740, -300)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("41")
+
+[node name="BackWillowR" parent="Actors" instance=ExtResource("17")]
+position = Vector2(720, 340)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("40")
+
+[node name="BackBigL" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-720, 360)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("42")
+
+[node name="BackPineL" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-745, 60)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("41")
+
+[node name="BackMedR" parent="Actors" instance=ExtResource("17")]
+position = Vector2(745, 110)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("43")
+
+[node name="GateWillowL" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-168, -545)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("40")
+
+[node name="GateWillowR" parent="Actors" instance=ExtResource("17")]
+position = Vector2(172, -545)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("40")
+
+[node name="Torii" parent="Actors" instance=ExtResource("17")]
+position = Vector2(0, -556)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("24")
+
+[node name="Clump1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-250, -90)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-450, -185)
+scale = Vector2(1.5, 1.5)
+flip_h = true
+texture = ExtResource("21")
+solid = true
+col_size = Vector2(44, 16)
+
+[node name="Clump3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-560, 10)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("23")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump4" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-300, 270)
+scale = Vector2(1.4, 1.4)
+flip_h = true
+texture = ExtResource("21")
+solid = true
+col_size = Vector2(44, 16)
+
+[node name="Clump5" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-560, 325)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump6" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-200, -295)
+scale = Vector2(1.5, 1.5)
+flip_h = true
+texture = ExtResource("22")
+solid = true
+col_size = Vector2(40, 14)
+
+[node name="Clump7" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-630, 165)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump8" parent="Actors" instance=ExtResource("17")]
+position = Vector2(300, -275)
+scale = Vector2(1.5, 1.5)
+flip_h = true
+texture = ExtResource("21")
+solid = true
+col_size = Vector2(44, 16)
+
+[node name="Clump9" parent="Actors" instance=ExtResource("17")]
+position = Vector2(520, -185)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump10" parent="Actors" instance=ExtResource("17")]
+position = Vector2(630, 10)
+scale = Vector2(1.6, 1.6)
+flip_h = true
+texture = ExtResource("23")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump11" parent="Actors" instance=ExtResource("17")]
+position = Vector2(560, 265)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Clump12" parent="Actors" instance=ExtResource("17")]
+position = Vector2(300, 205)
+scale = Vector2(1.4, 1.4)
+flip_h = true
+texture = ExtResource("22")
+solid = true
+col_size = Vector2(40, 14)
+
+[node name="Clump13" parent="Actors" instance=ExtResource("17")]
+position = Vector2(470, 395)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("21")
+solid = true
+col_size = Vector2(44, 16)
+
+[node name="Clump14" parent="Actors" instance=ExtResource("17")]
+position = Vector2(650, 325)
+scale = Vector2(1.5, 1.5)
+flip_h = true
+texture = ExtResource("23")
+solid = true
+col_size = Vector2(46, 16)
+
+[node name="Stalk1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-185, -40)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("32")
+
+[node name="Stalk2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(232, 330)
+scale = Vector2(1.2, 1.2)
+flip_h = true
+texture = ExtResource("32")
+
+[node name="Stalk3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-155, 420)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("32")
+
+[node name="Fill1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-690, -120)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("22")
+
+[node name="Fill2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(705, -150)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("22")
+
+[node name="Fill3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-410, -375)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("23")
+
+[node name="Fill4" parent="Actors" instance=ExtResource("17")]
+position = Vector2(440, -390)
+scale = Vector2(1.2, 1.2)
+flip_h = true
+texture = ExtResource("23")
+
+[node name="Fern1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(60, 120)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("28")
+
+[node name="Fern2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-120, 300)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("28")
+
+[node name="Fern3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(180, -40)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("28")
+
+[node name="Fern4" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-40, -250)
+scale = Vector2(1.2, 1.2)
+flip_h = true
+texture = ExtResource("28")
+
+[node name="Fern5" parent="Actors" instance=ExtResource("17")]
+position = Vector2(120, 240)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("28")
+
+[node name="Reeds1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-90, 180)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("29")
+
+[node name="Reeds2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(90, -120)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("29")
+
+[node name="Reeds3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(210, 60)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("29")
+
+[node name="Bush1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-150, 350)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("45")
+
+[node name="Bush2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(210, 120)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("45")
+
+[node name="Bush3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-430, 360)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("45")
+
+[node name="Bush4" parent="Actors" instance=ExtResource("17")]
+position = Vector2(430, 80)
+scale = Vector2(1.3, 1.3)
+flip_h = true
+texture = ExtResource("46")
+
+[node name="Bush5" parent="Actors" instance=ExtResource("17")]
+position = Vector2(40, -180)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("46")
+
+[node name="Rock1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(150, -160)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("47")
+
+[node name="Rock2" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-205, -60)
+scale = Vector2(1.1, 1.1)
+flip_h = true
+texture = ExtResource("48")
+
+[node name="Rock3" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-60, 20)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("49")
+
+[node name="Rock4" parent="Actors" instance=ExtResource("17")]
+position = Vector2(120, -300)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("49")
+
+[node name="Stump1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-120, -330)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("50")
+
+[node name="Log1" parent="Actors" instance=ExtResource("17")]
+position = Vector2(70, -360)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("51")
+
+[node name="ShrineJizo" parent="Actors" instance=ExtResource("17")]
+position = Vector2(250, -298)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("26")
+
+[node name="ShrineLantern" parent="Actors" instance=ExtResource("17")]
+position = Vector2(303, -292)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("25")
+
+[node name="ShrineRock" parent="Actors" instance=ExtResource("17")]
+position = Vector2(206, -290)
+scale = Vector2(1.1, 1.1)
+flip_h = true
+texture = ExtResource("47")
+
+[node name="ShrineStele" parent="Actors" instance=ExtResource("17")]
+position = Vector2(160, -250)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("27")
+
+[node name="BellProp" parent="Actors" instance=ExtResource("17")]
+position = Vector2(400, -80)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("31")
+
+[node name="HelmProp" parent="Actors" instance=ExtResource("17")]
+position = Vector2(-330, 300)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("30")
 
 [node name="Player" parent="Actors" instance=ExtResource("2")]
 position = Vector2(0, 440)
@@ -173,21 +470,21 @@ dialogue = ExtResource("12")
 prompt_verb = "search"
 guide_event = "found_bell"
 body_size = Vector2(26, 26)
-body_color = Color(0.52, 0.47, 0.24, 1)
+body_color = Color(0.52, 0.47, 0.24, 0)
 
 [node name="Shrine" parent="Actors" instance=ExtResource("8")]
 position = Vector2(160, -250)
 dialogue = ExtResource("13")
 prompt_verb = "read"
 body_size = Vector2(42, 58)
-body_color = Color(0.35, 0.38, 0.34, 1)
+body_color = Color(0.35, 0.38, 0.34, 0)
 
 [node name="Helm" parent="Actors" instance=ExtResource("8")]
 position = Vector2(-330, 300)
 dialogue = ExtResource("14")
 prompt_verb = "examine"
 body_size = Vector2(32, 22)
-body_color = Color(0.32, 0.26, 0.22, 1)
+body_color = Color(0.32, 0.26, 0.22, 0)
 
 [node name="ChapterGuide" parent="." instance=ExtResource("7")]
 data = ExtResource("9")
