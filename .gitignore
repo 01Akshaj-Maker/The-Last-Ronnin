@@ -4,3 +4,6 @@
 
 # macOS
 .DS_Store
+
+# Windows build: the raw .exe exceeds GitHub's 100MB limit — commit the zip instead
+/Build/*.exe
