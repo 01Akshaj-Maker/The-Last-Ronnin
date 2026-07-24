@@ -32,25 +32,23 @@ verbatim).
 - **License:** Confirmed by the project owner: free for commercial use. (itch.io pack; no
   license file shipped in the folder — usage rights confirmed directly by the owner.)
 
-## Feudal-Japan Tileset & Prop Pack (war-torn / snow / green sets) — environment art
-- **Author/creator:** ⚠️ TODO — awaiting pack name + author from project owner
-- **Source:** ⚠️ TODO — awaiting source URL from project owner
-- **Used for:** the environment art (first art/tileset pass) of every walkable chapter. The pack's
-  six sheets were copied into per-biome folders under `assets/environment/`:
-  - **Village** (`warvillage/`): `village_main.png` + `village_ground.png` (war-torn buildings,
-    torii, wells, lanterns, fences, trees, carts, banners, corpses + cobble/dirt/stone ground).
-  - **Bamboo Forest** (`bamboo/`): `bamboo_sheet.png` (green set — bamboo, shrines, lanterns,
-    gravestones, fences, bushes + grass/dirt/wood ground).
-  - **Snow Mountain** (`snow/`): `snow_sheet.png` + `snow_graves.png` (snow set — snow drifts,
-    rocks, snow torii, snow trees, gravestones, corpses, banners + snow/ice/rock ground). The snow
-    gravestone is also reused for the Final Approach.
-  Each biome has a curated 8–10-tile 64px `ground_atlas.png` (→ its `*_tileset.tres`) and cut-out
-  prop sprites in its `props/` folder.
-- **Modification:** ground tiles were cropped from the sheets' floor grids and resized to uniform
-  64px atlases; props were cut out and each sheet's near-black background was keyed to transparent.
-  No pixels repainted.
-- **License:** Confirmed by the project owner as licensed for use in this project. ⚠️ TODO —
-  record the exact license terms (and any required attribution wording) once provided.
+## Feudal-Japan Tileset & Prop Pack (war-torn / snow / green sets) — SUPERSEDED, no longer shipped
+- **Author/creator:** not recorded — the pack name and author were never supplied by the project
+  owner, and the pack was retired before that gap was closed (see status below).
+- **Source:** not recorded (private hand-off; no itch.io/marketplace URL was provided).
+- **Status:** **Superseded during the v2 art pass and removed from active use.** This was the first
+  environment-art pass: its six sheets were extracted into per-biome folders under
+  `assets/environment/` (`warvillage/`, and the original ground/prop seeds of `bamboo/` and
+  `snow/`). Judged too low-quality, it was replaced everywhere by the ForgottenMemories pack below.
+  The extracted sheets and their old `*_tileset.tres` still sit on disk but are **not referenced by
+  any scene or TileSet** — no pixel from this pack appears in the current build.
+- **Used for (historical):** the first tileset pass of the walkable chapters — war-torn village
+  buildings/torii/wells/fences, a green bamboo set, and a snow set (drifts, rocks, snow torii,
+  gravestones, banners). All since replaced.
+- **License:** Confirmed verbally by the project owner as licensed for use in this project. Because
+  the pack no longer ships, no attribution obligation carries into the released game; the retained
+  provenance here is historical. If the extracted folders are ever revived, the exact terms and
+  author/source must be captured first (Bible §8).
 
 ## ForgottenMemories (fm32x32) — terrain + nature for every walkable chapter (v2 art pass)
 - **Author/creator:** immunitys
@@ -68,7 +66,14 @@ verbatim).
   props in `fm/props/`; TileSet `fm/fm_tileset.tres`.
 - **Modification:** `assets/environment/snow/snow_tileset.png` is a hue-classified luminance recolour
   of `fm/tileset.png` (shading structure preserved, no tiles repainted). Derived work; same license.
-- **License:** ⚠️ TODO — confirm the pack's exact itch.io license terms with the project owner.
+- **License:** "Name your own price" itch.io pack (free download available). Free for personal and
+  commercial use; may be edited; credit not required (but appreciated); may NOT be repackaged,
+  redistributed, or resold. Verbatim, from the pack page:
+  > Assets can be edited and used for personal and commercial use. Credit is not necessary but it is
+  > highly appreciated. You may not repackage, redistribute or resell the assets, modified or not.
+
+  Our use complies: the pack drives the shipped game and its derived snow recolour, and neither the
+  originals nor the recolour are redistributed as a standalone asset.
 
 ## Original generated props (this project) — bamboo / winter / grave art
 - **Author/creator:** made for The Last Ronin (procedural pixel-art, PIL).
@@ -92,7 +97,12 @@ verbatim).
 - **Source:** https://zedpxl.itch.io/pixelart-forest-asset-pack
 - **Used for:** nothing — the Bamboo Forest was built from the FM pack + generated bamboo instead,
   to keep one consistent 32px look across chapters. Held for possible later use.
-- **License:** ⚠️ TODO — confirm the pack's exact itch.io license terms.
+- **License:** free and paid versions available; both permit commercial and non-commercial use, and
+  modification; may NOT be resold or redistributed (even if modified); may NOT be used for AI- or
+  NFT-related purposes. Verbatim, from the pack page:
+  > This asset pack(free and paid) can be used in commercial and non-commercial projects. You can
+  > modify it for your needs, but you cannot resell or redistribute it, even if modified. You cannot
+  > use this asset pack for AI or NFT related things.
 
 <!--
 Entry template — copy per asset:
