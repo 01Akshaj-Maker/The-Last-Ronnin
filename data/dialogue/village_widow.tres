@@ -1,14 +1,36 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=8 format=3]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_variant.gd" id="3"]
+
+[sub_resource type="Resource" id="choice_before_where"]
+script = ExtResource("2")
+text = "Where will I find him?"
+effects = {}
+reply = "\"East, past the crossroads — they've bound him by the empty paddies. You'll know him: the only man here still afraid of dying.\" She turns back to her grief. The road east waits."
+
+[sub_resource type="Resource" id="choice_before_go"]
+script = ExtResource("2")
+text = "The law rides with me. I'll see it done."
+effects = {}
+reply = "\"Then go quick. A thing like this only festers the longer it waits.\" She does not watch you leave."
+
+[sub_resource type="Resource" id="variant_before_thief"]
+script = ExtResource("3")
+axis = "Honor"
+comparator = "any"
+forbid_event = "talked_thief"
+override_choices = true
+choices = [SubResource("choice_before_where"), SubResource("choice_before_go")]
+body = "You have the road on you, stranger — and a blade at your hip. Then perhaps you're the one they've been waiting on. A man was caught with stolen grain, and they'll not lay a hand on him until a sword has said what the law will have. Go and settle it, if you've the stomach. This village hasn't the heart left to judge its own."
 
 [sub_resource type="Resource" id="variant_mercy"]
 script = ExtResource("3")
 axis = "Mercy"
 comparator = ">="
 threshold = 2
+require_event = "talked_thief"
 body = "Word runs ahead of a man on this road. They say yours is a gentler hand than most that carry a sword — that you stay the blade where other men would let it fall. Mercy, in a time like this. Bless you for it; I had near forgotten its face."
 
 [sub_resource type="Resource" id="variant_punished"]
@@ -16,6 +38,7 @@ script = ExtResource("3")
 axis = "Mercy"
 comparator = "<="
 threshold = -1
+require_event = "talked_thief"
 body = "They say you keep the old law to the letter, stranger — that your hand doesn't waver, whatever it costs the wretch beneath it. Well. The law is fed, at least. Hard times make hard men, I suppose."
 
 [sub_resource type="Resource" id="choice_a"]
@@ -39,5 +62,5 @@ reply = "Something in her weathered face eases. \"Then there's a little kindness
 script = ExtResource("1")
 speaker = "Widow by the Shrine"
 body = "This village has buried more sons than it has left to feed. You have the look of the road on you, stranger — passing through, like everything does now. Even kindness. Even grief."
-variants = [SubResource("variant_mercy"), SubResource("variant_punished")]
+variants = [SubResource("variant_before_thief"), SubResource("variant_mercy"), SubResource("variant_punished")]
 choices = [SubResource("choice_a"), SubResource("choice_b")]

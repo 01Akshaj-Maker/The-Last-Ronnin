@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "A Muster-Banner"
+body = "A war-banner, nailed to a stake and left to the rain — a call to arms for a battle already long lost. The lord's crest at its head is one you know: the same that was stitched on the sleeve you woke in. Your fingers find the mark on your own arm without looking. You marched under this. You are almost sure of it."
+variants = []
+choices = []

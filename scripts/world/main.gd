@@ -29,9 +29,11 @@ func _on_interactable_interacted(dialogue: DialogueData, node: Node) -> void:
 	_player.set_movement_enabled(false)
 	_set_interactables_enabled(false)
 	_dialogue_box.open(dialogue)
+	# Remember which beat this interactable reports, so on close we both advance the guide and
+	# record it globally (Identity) for ordering-aware dialogue variants (§3).
+	_pending_event = node.guide_event
 	if _guide != null:
 		_guide.mark_interacted()
-		_pending_event = node.guide_event
 
 
 func _on_choice_selected(_index: int, choice: DialogueChoice) -> void:
@@ -41,8 +43,10 @@ func _on_choice_selected(_index: int, choice: DialogueChoice) -> void:
 func _on_dialogue_closed() -> void:
 	_player.set_movement_enabled(true)
 	_set_interactables_enabled(true)
-	if _guide != null and _pending_event != "":
-		_guide.report_event(_pending_event)
+	if _pending_event != "":
+		Identity.mark_event(_pending_event)
+		if _guide != null:
+			_guide.report_event(_pending_event)
 		_pending_event = ""
 
 

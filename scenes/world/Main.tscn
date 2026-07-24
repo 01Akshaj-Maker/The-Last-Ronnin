@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3]
+[gd_scene load_steps=45 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
@@ -41,6 +41,9 @@
 [ext_resource type="Texture2D" path="res://assets/environment/fm/props/pit_b.png" id="41"]
 [ext_resource type="Texture2D" path="res://assets/environment/fm/props/gate.png" id="42"]
 [ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/torii.png" id="43"]
+[ext_resource type="PackedScene" path="res://scenes/props/Examinable.tscn" id="44"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/grave_a.png" id="46"]
+[ext_resource type="Resource" path="res://data/dialogue/village_grave.tres" id="48"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -61,31 +64,6 @@ texture_filter = 1
 tile_set = ExtResource("17")
 
 [node name="GroundDecals" parent="." type="Node2D"]
-
-[node name="PitHouseA" parent="GroundDecals" instance=ExtResource("18")]
-position = Vector2(-400, -170)
-scale = Vector2(1.6, 1.6)
-base_nudge = 76.80000000000001
-texture = ExtResource("40")
-
-[node name="PitTemple" parent="GroundDecals" instance=ExtResource("18")]
-position = Vector2(-320, -455)
-scale = Vector2(1.9, 1.9)
-base_nudge = 91.19999999999999
-texture = ExtResource("40")
-
-[node name="PitHouseB" parent="GroundDecals" instance=ExtResource("18")]
-position = Vector2(420, -190)
-scale = Vector2(1.6, 1.6)
-flip_h = true
-base_nudge = 76.80000000000001
-texture = ExtResource("41")
-
-[node name="PitHouseC" parent="GroundDecals" instance=ExtResource("18")]
-position = Vector2(-480, 210)
-scale = Vector2(1.4, 1.4)
-base_nudge = 67.19999999999999
-texture = ExtResource("40")
 
 [node name="Environment" parent="." type="Node2D"]
 
@@ -293,16 +271,18 @@ position = Vector2(-470, 272)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("30")
 
-[node name="WellRing" parent="Actors" instance=ExtResource("18")]
-position = Vector2(250, 155)
-scale = Vector2(1.7, 1.7)
-solid = true
-texture = ExtResource("35")
+[node name="GravesArt" parent="Actors" instance=ExtResource("18")]
+position = Vector2(-370, -452)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("46")
 
-[node name="WellRing2" parent="Actors" instance=ExtResource("18")]
-position = Vector2(272, 163)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("38")
+[node name="GravesExam" parent="Actors" instance=ExtResource("44")]
+position = Vector2(-370, -452)
+dialogue = ExtResource("48")
+prompt_verb = "read"
+body_size = Vector2(36, 30)
+body_color = Color(0.4, 0.4, 0.42, 0)
+pointer_height = -92.0
 
 [node name="Monument" parent="Actors" instance=ExtResource("18")]
 position = Vector2(45, 105)

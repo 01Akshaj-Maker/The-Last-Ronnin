@@ -17,10 +17,27 @@ extends Resource
 @export var choices: Array[DialogueChoice] = []
 
 
-## The line to show right now: the first matching reflected-world variant, else the default
-## body. Evaluated fresh each time the conversation opens.
-func get_active_body() -> String:
+## The first reflected-world variant whose condition currently holds, or null for the default.
+## One source of truth so the body and the choices below always come from the SAME variant.
+func get_active_variant() -> DialogueVariant:
 	for variant in variants:
 		if variant != null and variant.is_active():
-			return variant.body
-	return body
+			return variant
+	return null
+
+
+## The line to show right now: the active variant's body, else the default body. Evaluated
+## fresh each time the conversation opens.
+func get_active_body() -> String:
+	var variant: DialogueVariant = get_active_variant()
+	return variant.body if variant != null else body
+
+
+## The choices to offer right now. A variant only replaces the base choices when it opts in
+## (override_choices), so a reworded line can carry options that fit it — otherwise the base
+## choices stand.
+func get_active_choices() -> Array[DialogueChoice]:
+	var variant: DialogueVariant = get_active_variant()
+	if variant != null and variant.override_choices:
+		return variant.choices
+	return choices

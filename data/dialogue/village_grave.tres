@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "Roadside Graves"
+body = "Three stones, then a fourth with no name cut into it yet — the chisel and mallet left leaning against it, as if the mason was called away and never returned. Someone has kept fresh flowers on the smallest of them. In a village with so few left, that is its own kind of courage."
+variants = []
+choices = []

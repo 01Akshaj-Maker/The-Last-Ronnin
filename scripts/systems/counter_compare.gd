@@ -8,6 +8,7 @@ extends RefCounted
 
 static func evaluate(value: int, comparator: String, target: int) -> bool:
 	match comparator:
+		"any": return true
 		">=": return value >= target
 		"<=": return value <= target
 		">": return value > target

@@ -30,6 +30,7 @@ shape = SubResource("body_shape")
 shape = SubResource("zone_shape")
 
 [node name="Prompt" type="Label" parent="."]
+z_index = 300
 offset_left = -60.0
 offset_top = -98.0
 offset_right = 60.0

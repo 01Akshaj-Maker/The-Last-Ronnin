@@ -15,17 +15,34 @@ extends Node
 const AXES: Array[String] = ["Honor", "Mercy", "Attachment", "Selflessness"]
 
 var _counters: Dictionary = {}
+## Named story beats the player has passed (e.g. "talked_thief", "found_bell"). Unlike the
+## counters, these are booleans of "has this happened yet" — they let a later conversation frame
+## itself by what the player has already done (Bible §3 reflected world, ordering-aware). Set on
+## a conversation closing (Main), read by event-conditioned dialogue variants.
+var _events: Dictionary = {}
 
 
 func _ready() -> void:
 	reset()
 
 
-## Return every axis to 0. Used at game start and by the debug replay.
+## Return every axis to 0 and forget every beat. Used at game start and by the debug replay.
 func reset() -> void:
 	_counters.clear()
 	for axis in AXES:
 		_counters[axis] = 0
+	_events.clear()
+
+
+## Record that a named beat has happened. Empty names are ignored (a beatless interactable).
+func mark_event(event: String) -> void:
+	if event != "":
+		_events[event] = true
+
+
+## True once the named beat has been recorded this game.
+func has_event(event: String) -> bool:
+	return _events.has(event)
 
 
 ## Move a single axis by amount (may be negative). Unknown axes are ignored with a warning

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3]
+[gd_scene load_steps=48 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
@@ -42,6 +42,10 @@
 [ext_resource type="Texture2D" path="res://assets/environment/fm/props/rock_sm.png" id="49"]
 [ext_resource type="Texture2D" path="res://assets/environment/fm/props/stump1.png" id="50"]
 [ext_resource type="Texture2D" path="res://assets/environment/fm/props/log.png" id="51"]
+[ext_resource type="Texture2D" path="res://assets/environment/bamboo/props/scroll.png" id="52"]
+[ext_resource type="Texture2D" path="res://assets/environment/snow/props/banner.png" id="53"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_scroll.tres" id="54"]
+[ext_resource type="Resource" path="res://data/dialogue/bamboo_banner.tres" id="55"]
 
 [node name="BambooForest" type="Node2D"]
 script = ExtResource("1")
@@ -100,13 +104,15 @@ block_size = Vector2(220, 40)
 block_color = Color(0, 0, 0, 0)
 
 [node name="ShrineStone" parent="Environment" instance=ExtResource("5")]
-position = Vector2(250, -320)
+position = Vector2(-390, -305)
 block_size = Vector2(96, 70)
 block_color = Color(0, 0, 0, 0)
 
 [node name="ChapterExit" parent="." instance=ExtResource("6")]
 position = Vector2(0, -582)
 sign_text = "the trail north — deeper into the hills"
+require_ready = true
+gate_color = Color(0.13, 0.2, 0.11, 1)
 
 [node name="Path" parent="ChapterExit" index="0"]
 color = Color(0.26, 0.23, 0.19, 0)
@@ -173,7 +179,7 @@ solid = true
 col_size = Vector2(46, 16)
 
 [node name="Clump2" parent="Actors" instance=ExtResource("17")]
-position = Vector2(-450, -185)
+position = Vector2(230, -290)
 scale = Vector2(1.5, 1.5)
 flip_h = true
 texture = ExtResource("21")
@@ -410,23 +416,23 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("51")
 
 [node name="ShrineJizo" parent="Actors" instance=ExtResource("17")]
-position = Vector2(250, -298)
+position = Vector2(-390, -283)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("26")
 
 [node name="ShrineLantern" parent="Actors" instance=ExtResource("17")]
-position = Vector2(303, -292)
+position = Vector2(-337, -277)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("25")
 
 [node name="ShrineRock" parent="Actors" instance=ExtResource("17")]
-position = Vector2(206, -290)
+position = Vector2(-434, -275)
 scale = Vector2(1.1, 1.1)
 flip_h = true
 texture = ExtResource("47")
 
 [node name="ShrineStele" parent="Actors" instance=ExtResource("17")]
-position = Vector2(160, -250)
+position = Vector2(90, -240)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("27")
 
@@ -440,11 +446,35 @@ position = Vector2(-330, 300)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("30")
 
+[node name="ScrollArt" parent="Actors" instance=ExtResource("17")]
+position = Vector2(430, -245)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("52")
+
+[node name="ScrollExam" parent="Actors" instance=ExtResource("8")]
+position = Vector2(430, -239)
+dialogue = ExtResource("54")
+prompt_verb = "read"
+body_size = Vector2(28, 40)
+body_color = Color(0.5, 0.2, 0.18, 0)
+
+[node name="BannerArt" parent="Actors" instance=ExtResource("17")]
+position = Vector2(180, -330)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("53")
+
+[node name="BannerExam" parent="Actors" instance=ExtResource("8")]
+position = Vector2(180, -322)
+dialogue = ExtResource("55")
+prompt_verb = "examine"
+body_size = Vector2(26, 42)
+body_color = Color(0.5, 0.2, 0.18, 0)
+
 [node name="Player" parent="Actors" instance=ExtResource("2")]
 position = Vector2(0, 440)
 
 [node name="Mother" parent="Actors" instance=ExtResource("3")]
-position = Vector2(250, -250)
+position = Vector2(-390, -235)
 dialogue = ExtResource("10")
 prompt_verb = "speak"
 guide_event = "talked_mother"
@@ -471,9 +501,11 @@ prompt_verb = "search"
 guide_event = "found_bell"
 body_size = Vector2(26, 26)
 body_color = Color(0.52, 0.47, 0.24, 0)
+show_pointer = true
+pointer_height = -64.0
 
 [node name="Shrine" parent="Actors" instance=ExtResource("8")]
-position = Vector2(160, -250)
+position = Vector2(90, -240)
 dialogue = ExtResource("13")
 prompt_verb = "read"
 body_size = Vector2(42, 58)
@@ -485,6 +517,8 @@ dialogue = ExtResource("14")
 prompt_verb = "examine"
 body_size = Vector2(32, 22)
 body_color = Color(0.32, 0.26, 0.22, 0)
+show_pointer = true
+pointer_height = -52.0
 
 [node name="ChapterGuide" parent="." instance=ExtResource("7")]
 data = ExtResource("9")

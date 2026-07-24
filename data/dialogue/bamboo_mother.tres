@@ -1,14 +1,36 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_choice.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/systems/dialogue_variant.gd" id="3"]
+
+[sub_resource type="Resource" id="choice_bell_where"]
+script = ExtResource("2")
+text = "Where did you last hear it ring?"
+effects = {}
+reply = "\"Down where the reeds crowd the water, east of the trail. The wind carries it, some nights — or I only dream that it does.\" Her eyes drift east, toward the wet green. Something is waiting to be found there."
+
+[sub_resource type="Resource" id="choice_bell_promise"]
+script = ExtResource("2")
+text = "If it's here to be found, I'll bring it to you."
+effects = {}
+reply = "\"Would you? Then look where the green grows thickest and wettest — a small thing like that hides so easy.\" For the first time, something like hope crosses her face."
+
+[sub_resource type="Resource" id="variant_before_bell"]
+script = ExtResource("3")
+axis = "Honor"
+comparator = "any"
+forbid_event = "found_bell"
+override_choices = true
+choices = [SubResource("choice_bell_where"), SubResource("choice_bell_promise")]
+body = "Forgive an old woman — for a breath, you wore my boy's look. The ones who don't come home all carry it. He went to the war with a prayer bell on his belt, so I would hear him coming up the road. I never did hear it. If ever the reeds should give that little sound back… I would know it anywhere. Anywhere at all."
 
 [sub_resource type="Resource" id="variant_gentle"]
 script = ExtResource("3")
 axis = "Mercy"
 comparator = ">="
 threshold = 2
+require_event = "found_bell"
 body = "Word of you came up the road ahead of you — a gentle hand, they said, for a man with a sword. I had stopped believing such men were left. And now you bring me his bell. Sit. Please."
 
 [sub_resource type="Resource" id="choice_stay"]
@@ -33,5 +55,5 @@ reply = "She folds her fingers over the bell and nods, almost soldier to soldier
 script = ExtResource("1")
 speaker = "Mother at the Wayside Shrine"
 body = "My boy went to war with a prayer bell on his belt, so I would hear him coming home. I never did. Forgive me — for a moment, you had his look. The ones who don't come back all have it. You found his bell, didn't you. I can see it in your hand."
-variants = [SubResource("variant_gentle")]
+variants = [SubResource("variant_before_bell"), SubResource("variant_gentle")]
 choices = [SubResource("choice_stay"), SubResource("choice_go")]

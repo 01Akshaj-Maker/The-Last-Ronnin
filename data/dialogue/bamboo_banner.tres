@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/dialogue_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+speaker = "Fallen Standard"
+body = "A field standard, its pole snapped, the red silk gone the colour of old rust. Whoever carried it fell here and was never gathered up — only the bamboo has grown to stand honour-guard in his place. The forest is quieter than a forest should be. It remembers being a battlefield."
+variants = []
+choices = []

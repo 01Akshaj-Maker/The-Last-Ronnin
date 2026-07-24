@@ -27,6 +27,9 @@ const _COLOR_SELECTED: Color = Color(1, 1, 1, 1)
 const _COLOR_DIMMED: Color = Color(0.58, 0.58, 0.63, 1)
 
 var _data: DialogueData
+# The choices resolved for this opening (a variant may swap them for its own), so the box shows
+# and confirms whatever actually matches the shown line.
+var _choices: Array[DialogueChoice] = []
 var _selected: int = 0
 var _is_open: bool = false
 # The raw choice text, so the selection marker can be re-prefixed without doubling up.
@@ -47,15 +50,16 @@ func _ready() -> void:
 
 func open(data: DialogueData) -> void:
 	_data = data
+	_choices = data.get_active_choices()
 	_speaker_label.text = data.speaker
 	_body_label.text = data.get_active_body()
 	_selected = 0
 	for i in _choice_rows.size():
-		var has_choice: bool = i < data.choices.size()
+		var has_choice: bool = i < _choices.size()
 		_choice_rows[i].visible = has_choice
 		if has_choice:
-			_choice_texts[i] = data.choices[i].text
-	_hint_label.text = "Enter to continue" if data.choices.is_empty() else "Up / Down to choose      Enter to confirm"
+			_choice_texts[i] = _choices[i].text
+	_hint_label.text = "Enter to continue" if _choices.is_empty() else "Up / Down to choose      Enter to confirm"
 	_is_open = true
 	_awaiting_reply = false
 	_armed = false
@@ -76,7 +80,7 @@ func _process(_delta: float) -> void:
 			_close_immediately()
 			closed.emit()
 		return
-	var count: int = _data.choices.size()
+	var count: int = _choices.size()
 	if count == 0:
 		# A choiceless line (e.g. an examined object): interact/Enter just dismisses it.
 		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept"):
@@ -119,7 +123,7 @@ func _update_highlight() -> void:
 
 
 func _confirm() -> void:
-	var choice: DialogueChoice = _data.choices[_selected]
+	var choice: DialogueChoice = _choices[_selected]
 	var index: int = _selected
 	# Apply the choice's recorded effects now (Main listens); the conversation may go on.
 	choice_selected.emit(index, choice)
