@@ -15,6 +15,8 @@ const PER_CHARACTER: float = 0.034
 const MAXIMUM: float = 9.0
 
 
-## How long to hold `text` on screen, never shorter than `minimum`.
-static func hold_for(text: String, minimum: float) -> float:
-	return clampf(minimum + text.length() * PER_CHARACTER, minimum, MAXIMUM)
+## How long to hold `text` on screen, never shorter than `minimum`. Callers that want a
+## different pace or ceiling than the shared defaults (e.g. the reflective travel cards) may
+## pass their own `per_character` and `ceiling`; omitting them keeps the original behaviour.
+static func hold_for(text: String, minimum: float, per_character: float = PER_CHARACTER, ceiling: float = MAXIMUM) -> float:
+	return clampf(minimum + text.length() * per_character, minimum, ceiling)

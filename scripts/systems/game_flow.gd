@@ -10,7 +10,12 @@ extends Node
 
 const FADE_TIME: float = 0.45
 const CARD_FADE: float = 0.6
-const CARD_HOLD: float = 1.6
+# Travel cards are the reflective beats between chapters — give them a longer floor, a slower
+# reading pace, and a higher ceiling than the shared narration default so the player can sit
+# with them. (Other narration keeps ReadingTime's defaults.)
+const CARD_HOLD: float = 3.0
+const CARD_PER_CHAR: float = 0.05
+const CARD_MAX: float = 16.0
 
 var _data: GameFlowData
 var _index: int = -1        # -1 before the first chapter; 0..n-1 while in a chapter
@@ -88,7 +93,7 @@ func _show_card(text: String) -> void:
 	var t_in: Tween = create_tween()
 	t_in.tween_property(_card, "modulate:a", 1.0, CARD_FADE)
 	await t_in.finished
-	await get_tree().create_timer(ReadingTime.hold_for(text, CARD_HOLD)).timeout
+	await get_tree().create_timer(ReadingTime.hold_for(text, CARD_HOLD, CARD_PER_CHAR, CARD_MAX)).timeout
 	var t_out: Tween = create_tween()
 	t_out.tween_property(_card, "modulate:a", 0.0, CARD_FADE)
 	await t_out.finished
