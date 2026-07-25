@@ -60,6 +60,7 @@ func restart() -> void:
 	if _busy:
 		return
 	Identity.reset()
+	Music.restart()  # the bed faded out at the grave — bring it back for the new run
 	_index = -1
 	await _go(_data.intro_scene, "")
 

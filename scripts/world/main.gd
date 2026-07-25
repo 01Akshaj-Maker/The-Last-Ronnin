@@ -20,6 +20,7 @@ var _pending_event: String = ""
 
 func _ready() -> void:
 	_dialogue_box.closed.connect(_on_dialogue_closed)
+	_dialogue_box.cancelled.connect(_on_dialogue_cancelled)
 	_dialogue_box.choice_selected.connect(_on_choice_selected)
 	for node in get_tree().get_nodes_in_group("interactable"):
 		node.interacted.connect(_on_interactable_interacted.bind(node))
@@ -48,6 +49,14 @@ func _on_dialogue_closed() -> void:
 		if _guide != null:
 			_guide.report_event(_pending_event)
 		_pending_event = ""
+
+
+## The player backed out of a choice with E. Hand control back, but record nothing — no beat,
+## no effect — so the conversation still counts as unfinished and can be had for real later.
+func _on_dialogue_cancelled() -> void:
+	_player.set_movement_enabled(true)
+	_set_interactables_enabled(true)
+	_pending_event = ""
 
 
 func _set_interactables_enabled(enabled: bool) -> void:

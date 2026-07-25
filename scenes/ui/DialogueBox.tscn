@@ -90,4 +90,4 @@ text = "Choice B"
 layout_mode = 2
 modulate = Color(0.62, 0.62, 0.66, 1)
 theme_override_font_sizes/font_size = 15
-text = "Up / Down to choose      Enter to confirm"
+text = "W / S to choose      Enter to confirm      E to back out"

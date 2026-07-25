@@ -17,5 +17,5 @@ advance_on = ""
 [resource]
 script = ExtResource("1")
 onboarding = PackedStringArray("Another village emptied by the war. Strange — I have never walked here, yet my feet knew the way.", "I carry a message I cannot open. Someone here may know what it says — and why it was given to me.")
-controls_hint = "move — WASD / arrows           speak — E"
+controls_hint = "move — WASD           speak — E"
 objectives = [SubResource("obj_gather"), SubResource("obj_leave")]

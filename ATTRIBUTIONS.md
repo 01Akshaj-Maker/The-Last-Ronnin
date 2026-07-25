@@ -104,6 +104,17 @@ verbatim).
   > modify it for your needs, but you cannot resell or redistribute it, even if modified. You cannot
   > use this asset pack for AI or NFT related things.
 
+## Bamboo Wind Serenity — background music
+- **Author/creator:** Djovan (uploaded to Pixabay)
+- **Source:** https://pixabay.com/music/meditationspiritual-bamboo-wind-serenity-497194/
+- **Used for:** the looping ambient background music, played unbroken across every chapter by the
+  Music autoload (`scripts/systems/music.gd`) and faded out at the grave. File at
+  `assets/audio/bamboo_serenity.mp3` (256 kbps MP3, ~4.5 min, looped).
+- **License:** Pixabay Content License — free for commercial and non-commercial use, no
+  attribution required (logged here anyway, per the project's §8 rule). The audio may not be sold
+  or redistributed as a standalone file, nor used to build a competing stock-media service. The
+  license is shown on the track page linked above.
+
 <!--
 Entry template — copy per asset:
 

@@ -80,6 +80,8 @@ func _close() -> void:
 	_prompt.visible = false
 	if _player.has_method("set_movement_enabled"):
 		_player.set_movement_enabled(false)
+	# The ambient bed fades out with the light as he kneels — the grave is meant to land in silence.
+	Music.fade_out()
 	# He kneels to read the stone; the world goes slowly, silently dark — to the exact near-black
 	# the reveal opens on. The four-second fade IS the moment at the grave.
 	var tween: Tween = create_tween()

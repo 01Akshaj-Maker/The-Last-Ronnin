@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 ## Grey-box dialogue UI. Shows a speaker, body text, and up to two choices; the player
-## moves the selection with up/down (or left/right) and confirms with interact/Enter.
+## moves the selection with W/S, confirms a choice with Enter, or backs out with E.
 ##
 ## Knows nothing about NPCs or the player — it is opened with a DialogueData and reports
 ## back which choice was picked, then hides itself (Bible §9). The body it shows is whatever
@@ -10,6 +10,9 @@ extends CanvasLayer
 
 signal choice_selected(index: int, choice: DialogueChoice)
 signal closed
+## Emitted when the player presses E to step away from a choice instead of committing to one:
+## the conversation closes with no choice made, so the listener records nothing.
+signal cancelled
 
 @onready var _speaker_label: Label = $Root/Box/VBox/Speaker
 @onready var _body_label: Label = $Root/Box/VBox/Body
@@ -59,7 +62,7 @@ func open(data: DialogueData) -> void:
 		_choice_rows[i].visible = has_choice
 		if has_choice:
 			_choice_texts[i] = _choices[i].text
-	_hint_label.text = "Enter to continue" if _choices.is_empty() else "Up / Down to choose      Enter to confirm"
+	_hint_label.text = "Enter to continue" if _choices.is_empty() else "W / S to choose      Enter to confirm      E to back out"
 	_is_open = true
 	_awaiting_reply = false
 	_armed = false
@@ -93,13 +96,22 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_right"):
 		_selected = (_selected + 1) % count
 		_update_highlight()
-	elif Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept"):
+	elif Input.is_action_just_pressed("ui_accept"):
 		_confirm()
+	elif Input.is_action_just_pressed("interact"):
+		# E on a choice steps away without committing — a way out of a conversation. (Enter is
+		# checked first, so it still confirms; E fires "interact" but not "ui_accept".)
+		_cancel()
 
 
 func _close_immediately() -> void:
 	_is_open = false
 	visible = false
+
+
+func _cancel() -> void:
+	_close_immediately()
+	cancelled.emit()
 
 
 func _build_choice_styles() -> void:

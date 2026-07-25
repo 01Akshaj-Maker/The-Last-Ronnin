@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameFlow="*res://scripts/systems/game_flow.gd"
 Identity="*res://scripts/systems/identity.gd"
+Music="*res://scripts/systems/music.gd"
 
 [display]
 
