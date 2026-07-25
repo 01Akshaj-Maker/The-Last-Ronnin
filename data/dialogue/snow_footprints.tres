@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "The Slope Below"
-body = "You turn to see how far you've climbed. The slope falls away beneath you — smooth, white, unbroken. No trail. No tracks. Not one footprint, though you've been climbing since the bamboo. The snow lies as if it never felt your weight. As if you had none to give. You look at your own two hands — and you do not let yourself finish the thought."
+body = "You turn to see how far you've climbed. The slope falls away beneath you — smooth, white, unbroken. No trail. No tracks. Not one footprint, though you've been climbing since the bamboo. The snow lies as if it never felt your weight. As if you had none to give. You look at your own two hands — and you do not let yourself finish the thought. Only one thing still feels solid, still feels wholly yours: Carry it to the end. Do not set it down. You hold to it, and you climb on."
 variants = []
 choices = []

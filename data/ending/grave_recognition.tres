@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GraveRecognition" load_steps=12 format=3]
+[gd_resource type="Resource" script_class="GraveRecognition" load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/grave_recognition.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/systems/recognition_line.gd" id="2"]
@@ -33,10 +33,35 @@ script = ExtResource("2")
 monk = false
 text = "I carried myself... all this way... to my own grave."
 
+[sub_resource type="Resource" id="v1"]
+script = ExtResource("2")
+monk = true
+text = "And do you remember what you swore, there at the end of the field? Carry him home. See him laid to rest beneath his own name. You would not leave that man in the mud for the crows."
+
+[sub_resource type="Resource" id="v2"]
+script = ExtResource("2")
+monk = false
+text = "...Him. Then the one I promised to carry home—"
+
+[sub_resource type="Resource" id="v3"]
+script = ExtResource("2")
+monk = true
+text = "Was you. The brother you vowed to bring home was yourself. See — the stone has waited all this while, its name uncut, the chisel resting where the mason left it. You kept faith past death itself. You never once let the vow fall."
+
+[sub_resource type="Resource" id="v4"]
+script = ExtResource("2")
+monk = false
+text = "An unbroken vow... and I never once knew what it would ask of me."
+
+[sub_resource type="Resource" id="v5"]
+script = ExtResource("2")
+monk = true
+text = "The truest vows never tell us. You carried it to the end, samurai — and the end is here."
+
 [sub_resource type="Resource" id="l7"]
 script = ExtResource("2")
 monk = true
-text = "As every soul must. And the stone already knows you — not by my telling, but by every mercy you spared, and every grievance you would not set down."
+text = "And the stone knows you already — not by my telling, but by every mercy you spared, and every grievance you would not set down."
 
 [sub_resource type="Resource" id="l8"]
 script = ExtResource("2")
@@ -46,11 +71,11 @@ text = "...Then what is left for me to do?"
 [sub_resource type="Resource" id="l9"]
 script = ExtResource("2")
 monk = true
-text = "Only this. Set the sword down. The road is walked. Rest now — and let the wind carry what you were."
+text = "Only this. Set the sword down — and the vow beside it. The road is walked; the name is home. Rest now, and let the wind carry what you were."
 
 [resource]
 script = ExtResource("1")
-lines = [SubResource("l1"), SubResource("l2"), SubResource("l3"), SubResource("l4"), SubResource("l5"), SubResource("l6"), SubResource("l7"), SubResource("l8"), SubResource("l9")]
+lines = [SubResource("l1"), SubResource("l2"), SubResource("l3"), SubResource("l4"), SubResource("l5"), SubResource("l6"), SubResource("v1"), SubResource("v2"), SubResource("v3"), SubResource("v4"), SubResource("v5"), SubResource("l7"), SubResource("l8"), SubResource("l9")]
 line_fade = 1.2
 line_hold = 2.2
 settle = 2.0

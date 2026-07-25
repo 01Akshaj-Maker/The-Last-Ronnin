@@ -25,5 +25,5 @@ reply = "A faint, sad smile creases his face. \"Gentleness, from a hand the war 
 [resource]
 script = ExtResource("1")
 speaker = "Wandering Monk"
-body = "You carry a message you cannot read, samurai — to a place you have never been, yet your feet already know the way. When the road finally ends, what would you have it say of the man who walked it?"
+body = "You carry more than a message, samurai — you carry a vow you can no longer remember making, to a place you have never been, yet your feet already know the way. A man bound by a promise he cannot name is a haunted thing. When the road finally ends, what would you have it say of the man who kept walking?"
 choices = [SubResource("choice_a"), SubResource("choice_b")]

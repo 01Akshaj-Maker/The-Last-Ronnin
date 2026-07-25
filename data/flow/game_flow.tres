@@ -6,17 +6,17 @@
 [sub_resource type="Resource" id="ch_village"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/Main.tscn"
-travel_text = "He walked on, and the rain thinned to mist. The grey fields gave way to green, and the bamboo closed over him like water."
+travel_text = "He walked on, and the rain thinned to mist. The grey fields gave way to green, and the bamboo closed over him like water. Everything on that road grew fainter — the rain, the fields, even his own name. Everything but the vow. That, he carried whole."
 
 [sub_resource type="Resource" id="ch_bamboo"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/BambooForest.tscn"
-travel_text = "The bamboo fell away behind him, and the air went thin and white. The land tilted upward — stone, then snow — toward the last cold shoulder of the mountains, where the world runs nearly out of sound."
+travel_text = "The bamboo fell away behind him, and the air went thin and white. The land tilted upward — stone, then snow — toward the last cold shoulder of the mountains, where the world runs nearly out of sound. His legs had long since stopped asking why they climbed. Only the vow answered them, the same as ever: Carry it to the end. Do not set it down."
 
 [sub_resource type="Resource" id="ch_snow"]
 script = ExtResource("2")
 scene_path = "res://scenes/world/SnowMountain.tscn"
-travel_text = ""
+travel_text = "The last cairn fell behind, and the wind fell with it, until there was no sound left in the world at all. No village. No name. No war. Only a man, and the vow he would not set down, walking the final mile toward whatever waited to receive it."
 
 [sub_resource type="Resource" id="ch_final"]
 script = ExtResource("2")
@@ -29,7 +29,9 @@ intro_scene = "res://scenes/flow/Intro.tscn"
 intro_title = "The Last Ronin"
 intro_body = "The great war is over. Your lord is dead, your clan scattered, your sword cracked at the hilt.
 
-One duty is left to you: carry a final message across the land — though you cannot say who gave it to you, nor why.
+One thing did not break with it. A vow — sworn at the end of the fighting, to a face you can no longer picture: carry him home, and see him laid to rest beneath his own name. Carry it to the end. Do not set it down.
+
+You cannot say who he was, nor who asked it of you. Only that the vow is yours, and it is not yet kept.
 
 Walk on, samurai. The road is waiting."
 chapters = [SubResource("ch_village"), SubResource("ch_bamboo"), SubResource("ch_snow"), SubResource("ch_final")]

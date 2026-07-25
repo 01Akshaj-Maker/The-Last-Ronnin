@@ -47,7 +47,7 @@ threshold = -1
 
 [resource]
 script = ExtResource("1")
-opening = "Here lies a ronin, come at last to the only door that was always his."
+opening = "Here lies a ronin, come at last to the only door that was always his — his vow kept, and his name his own again."
 lines = [SubResource("mercy_high"), SubResource("mercy_low"), SubResource("honor_high"), SubResource("self_high"), SubResource("attach_high"), SubResource("attach_low")]
 fallback = "Of him little was remembered, and less was ever written."
-closing = "Rest now. The road is walked."
+closing = "The vow is kept. The road is walked. Rest now."

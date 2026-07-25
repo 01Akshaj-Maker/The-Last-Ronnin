@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "War-Dead Shrine"
-body = "A stone crowded with the names of the war dead. Your fingers move down the rows on their own — and stop, near the bottom. You do not read the name. Somehow, you already know it."
+body = "A stone crowded with the names of the war dead. Your fingers move down the rows on their own — and stop, near the bottom. You do not read the name. Somehow, you already know it. And the vow rises with it, heavier here among so many unburied: Carry it to the end. Do not set it down."
 variants = []
 choices = []

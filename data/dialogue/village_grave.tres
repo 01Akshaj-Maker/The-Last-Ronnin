@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1")
 speaker = "Roadside Graves"
-body = "Three stones, then a fourth with no name cut into it yet — the chisel and mallet left leaning against it, as if the mason was called away and never returned. Someone has kept fresh flowers on the smallest of them. In a village with so few left, that is its own kind of courage."
+body = "Three stones, then a fourth with no name cut into it yet — the chisel and mallet left leaning against it, as if the mason was called away and never returned. Something in the sight of it snags at you, the way a half-kept promise does. You look away before you can ask why. Someone has kept fresh flowers on the smallest of them. In a village with so few left, that is its own kind of courage."
 variants = []
 choices = []
